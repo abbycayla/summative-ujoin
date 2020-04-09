@@ -1,6 +1,6 @@
 <template>
   <div> 
-      <button> <router-link v-bind:to="'/admin-login'"> Log in as Admin </router-link> </button>
+      <button> <router-link v-bind:to="'/'"> Back </router-link> </button>
       <h1> Enter Code </h1>
       <input>
       <button> <router-link v-bind:to="'/all-items-user'"> Join </router-link> </button>

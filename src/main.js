@@ -6,6 +6,7 @@ import VueResource from 'vue-resource';
 //LOGIN
 import EnterCode from './components/login/EnterCode.vue';
 import AdminLogin from './components/login/AdminLogin.vue';
+import UserLogin from './components/login/UserLogin.vue';
 
 //USER
 import AllItemsUser from './components/user/AllItemsUser.vue';
@@ -32,6 +33,10 @@ Vue.use(VueResource);
 const routes = [
   {
     path: '/',
+    component: UserLogin,
+  },
+  {
+    path: '/enter-code',
     component: EnterCode,
   },
   {
