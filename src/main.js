@@ -70,6 +70,7 @@ const routes = [
   {
     path: '/conference-details',
     component: ConferenceDetails,
+    name: "ConferenceDetails"
   },
   {
     path: '/edit-conference',
