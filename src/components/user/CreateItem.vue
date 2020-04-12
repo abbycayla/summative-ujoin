@@ -4,7 +4,7 @@
       <HeaderConference/>
       <div class="create-item-heading">
             <div class="heading-button">
-                <button> <router-link v-bind:to="'/all-items-user'"> back </router-link> </button>
+                <router-link v-bind:to="'/all-items-user'"> <img class="back" src="@/assets/back-light.png"> </router-link> 
             </div>
             <div class="heading-title">
                 <h1> Ask a Question </h1>
@@ -70,7 +70,7 @@ export default {
 h1 {
     text-align: center;
     font-size: 2em;
-    font-weight: 400; 
+    font-weight: lighter; 
     margin: 0px 20px;
 }
 
@@ -117,12 +117,33 @@ p {
     font-weight: lighter;
 }
 
+.back {
+    margin-top: 8px;
+    width: 30px;
+}
+
 
 
 @media only screen and (min-width: 768px) {
+.body-textarea {
+    margin-bottom: 60px;
+}
+
     textarea {
     width: 50%;
 }
+
+h1 {
+    font-size: 3em;
+    padding-bottom: 20px;
+}
+
+.back {
+    margin-top: 10px;
+    margin-right: 10px;
+    width: 50px;
+}
+
 }
 
 
