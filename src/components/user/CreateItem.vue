@@ -94,7 +94,7 @@ textarea {
     padding: 20px;
     width: 70%;
     outline: none;
-    /* height: 70%; */
+    /* height: 50%; */
     /* border-radius: 10%; */
 }
 
@@ -124,7 +124,6 @@ p {
     width: 50%;
 }
 }
-
 
 
 
