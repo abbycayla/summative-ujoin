@@ -42,7 +42,7 @@ export default {
 .create-item {
     background-color: #454c45;
     height: 100vh;
-    color: white;
+    /* color: white; */
     font-family: 'Open Sans', sans-serif;
 }
 
