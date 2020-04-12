@@ -2,6 +2,7 @@
   <div class="create-item"> 
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
       <HeaderConference/>
+      <!-- <HeaderAdmin/> -->
       <div class="create-item-heading">
             <div class="heading-button">
                 <button> <router-link v-bind:to="'/all-items-user'"> back </router-link> </button>
@@ -26,6 +27,7 @@
 <script>
 import NavBarUser from "./NavBarUser"
 import HeaderConference from "./HeaderConference"
+// import HeaderAdmin from "../admin/HeaderAdmin"
 
 export default {
 
@@ -33,6 +35,7 @@ export default {
     components:{
         NavBarUser,
         HeaderConference
+        // HeaderAdmin
     }
 }
 </script>
@@ -42,7 +45,7 @@ export default {
 .create-item {
     background-color: #454c45;
     height: 100vh;
-    /* color: white; */
+    color: white;
     font-family: 'Open Sans', sans-serif;
 }
 
