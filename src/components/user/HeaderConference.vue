@@ -35,4 +35,19 @@ h1 {
 }
 
 
+@media only screen and (min-width: 768px) {
+.header {
+    padding: 20px 40px;
+}
+
+.header img {
+    width: 140px;
+}
+
+h1 {
+    padding-top: 10px;
+}
+}
+
+
 </style>

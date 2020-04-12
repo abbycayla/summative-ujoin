@@ -94,7 +94,7 @@ textarea {
     padding: 20px;
     width: 70%;
     outline: none;
-    /* height: 70%; */
+    /* height: 50%; */
     /* border-radius: 10%; */
 }
 
@@ -115,6 +115,12 @@ p {
     outline: none;
     font-size: 1.2em;
     font-weight: lighter;
+}
+
+@media only screen and (min-width: 768px) {
+    .submit {
+        background-color: red;
+    }
 }
 
 
