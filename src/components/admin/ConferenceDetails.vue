@@ -13,7 +13,7 @@
       </div>
       <div class="conference-code">
         <h2> User Entrance Code </h2>
-        <p> (details) </p>
+        <p class="user-entrance-code"> (code) </p>
       </div>
       </div>
       <button> <router-link v-bind:to="'/edit-conference'"> Edit </router-link> </button>
@@ -68,6 +68,7 @@ button {
   padding-top: 30px;
   align-items: center;
   flex-direction: column ;
+  text-align: left;
 }
 
 .conference-details-content div {
@@ -82,6 +83,10 @@ h2 {
 
 p {
   font-size: .9em;
+}
+
+.user-entrance-code {
+  font-weight: bold;
 }
 
 @media only screen and (min-width: 768px) {
