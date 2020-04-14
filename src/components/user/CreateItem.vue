@@ -103,19 +103,18 @@ p {
     margin: 0px 20%;
     font-weight: lighter;
     font-size: .9em;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 
 .submit {
-    padding: 5px 10px;
+    padding: 5px 7px;
     border: none;
-    background-color: #54a9de;
-    color: #f2f2f2;
-    box-shadow: 3px 5px 5px rgb(49, 49, 49);
+    background-color: #4baced;
+    color: white;
     outline: none;
-    font-size: 1.2em;
-    font-weight: lighter;
+    font-size: 20px;
 }
+
 
 .back {
     margin-top: 8px;
