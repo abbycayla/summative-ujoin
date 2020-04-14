@@ -103,7 +103,7 @@ p {
     margin: 0px 20%;
     font-weight: lighter;
     font-size: .9em;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 
 .submit {
