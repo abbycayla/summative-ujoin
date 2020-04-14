@@ -17,10 +17,7 @@ export default {
 
 <style scoped>
 
-h1 {
-    text-align: center;
-    font-weight: lighter;
-}
+
 
 
 </style>
