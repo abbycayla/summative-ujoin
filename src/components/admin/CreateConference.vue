@@ -62,14 +62,14 @@ h1 {
     margin-top: 8px;
 }
 
+
 .submit {
-    padding: 5px 10px;
+    padding: 5px 7px;
     border: none;
-    background-color: #54a9de;
-    box-shadow: 3px 5px 5px rgb(49, 49, 49);
+    background-color: #4baced;
+    color: white;
     outline: none;
-    font-size: 1.2em;
-    font-weight: lighter;
+    font-size: 20px;
     display: block;
     margin-right: auto;
     margin-left: auto;
