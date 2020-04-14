@@ -16,9 +16,14 @@
         <p class="user-entrance-code"> (code) </p>
       </div>
       </div>
-      <button> <router-link v-bind:to="'/edit-conference'"> Edit </router-link> </button>
-      <button> <router-link v-bind:to="'/all-items-admin'"> HOST </router-link> </button>
-      <NavBarUser/>
+      <div class="buttons-nav">
+        <div>
+      <button class="edit"> <router-link v-bind:to="'/edit-conference'"> Edit </router-link> </button>
+        </div>
+        <div>
+      <button class="host"> <router-link v-bind:to="'/all-items-admin'"> HOST </router-link> </button>
+      </div>
+      </div>
   </div>
 </template>
 
@@ -50,16 +55,35 @@ h1 {
     margin: 0px 20px;
 }
 
+.buttons-nav {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+}
+
 button {
-    padding: 5px 10px;
-    border: none;
-    background-color: #54a9de;
-    box-shadow: 3px 5px 5px rgb(49, 49, 49);
+  padding: 20px 85px;
+  /* margin: 0px 5px; */
+   border: none;
     outline: none;
-    font-size: 1.2em;
-    font-weight: lighter;
-    
-    margin-top: 30px;
+}
+
+button a {
+    font-size: 20px;
+  text-decoration: none;
+}
+
+.host{
+    background-color: #54a9de;
+}
+
+.host a {
+  color: white;
+}
+
+.edit a{
+  color: #454c45;
 }
 
 .conference-details-content {
