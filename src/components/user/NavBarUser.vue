@@ -26,7 +26,7 @@ ul {
 }
 
 li {
-    padding: 10px 10px;
+    padding: 2% 5%;
     text-align: center;
     border: none;
     outline: none;
@@ -51,6 +51,16 @@ li a {
 }
 
 
+@media only screen and (min-width: 768px){
+    ul {
+        justify-content: center;
+    }
 
+    li {
+        padding: 1% 14%;
+        font-size: 1.3em;
+        text-align: center;
+    }
+}
 
 </style>
