@@ -110,9 +110,6 @@ input {
     font-size: 3em;
 }
 
-.form {
-  padding-top: 20px;
-}
 }
 
 </style>
