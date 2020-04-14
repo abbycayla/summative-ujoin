@@ -1,7 +1,7 @@
 <template>
   <div class="conference-details"> 
     <HeaderAdmin/>
-      <h1> Conference </h1>
+      <h1> Your Conference </h1>
       <div class="conference-details-content">
       <div class="conference-name">
         <h2> Conference Name </h2>
@@ -16,9 +16,10 @@
         <p class="user-entrance-code"> (code) </p>
       </div>
       </div>
-      <button> <router-link v-bind:to="'/edit-conference'"> Edit </router-link> </button>
-      <button> <router-link v-bind:to="'/all-items-admin'"> HOST </router-link> </button>
-      <NavBarUser/>
+      <ul class="buttons-nav">
+      <li class="edit"> <router-link v-bind:to="'/edit-conference'"> Edit <br/> Conference </router-link> </li>
+      <li class="host"> <router-link v-bind:to="'/all-items-admin'"> HOST </router-link> </li>
+      </ul>
   </div>
 </template>
 
@@ -46,43 +47,73 @@ export default {
 h1 {
     text-align: center;
     font-size: 2em;
-    font-weight: 400; 
+    font-weight: lighter; 
     margin: 0px 20px;
 }
 
-button {
-    padding: 5px 10px;
-    border: none;
-    background-color: #54a9de;
-    box-shadow: 3px 5px 5px rgb(49, 49, 49);
+ul {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  background-color: white;
+}
+
+li {
+    padding: 5% 10px;
+    text-align: center;
     outline: none;
+    list-style-type: none;
+    width: 220px;
+}
+
+li a {
     font-size: 1.2em;
+    text-decoration: none;
+    color: #28313f;
     font-weight: lighter;
-    
-    margin-top: 30px;
+}
+
+.host{
+    background-color: #54a9de;
+}
+
+.edit{
+    background-color: #454c45;
+}
+
+
+.host a, .edit a {
+  color: white;
+}
+
+.host {
+  padding-top: 30px;
 }
 
 .conference-details-content {
-  /* margin: 0% 20%; */
-  display: flex;
+  margin: 0% 20%;
+  /* display: flex; */
   padding-top: 30px;
-  align-items: center;
-  flex-direction: column ;
+  /* align-items: center; */
+  /* flex-direction: column ; */
   text-align: left;
 }
 
 .conference-details-content div {
-  padding: 15px 0px;
+  padding: 18px 0px;
   /* margin: 10px 0px; */
 }
 
 h2 {
-  font-size: 1.4em;
-  font-weight: lighter;
+  font-size: 1.2em;
+  /* font-weight: lighter; */
+  padding-bottom: 10px;
 }
 
 p {
-  font-size: .9em;
+  font-size: 1.2em;
+  font-weight: lighter;
 }
 
 .user-entrance-code {
@@ -96,11 +127,30 @@ p {
   }
 
   h1 {
-    font-size: 3em;
+    font-size: 3.2em;
+}
+
+.conference-details-content {
+  margin: 0% 28%;
+}
+
+h2 {
+    font-size: 1.5em;
 }
 
 .form {
   padding-top: 20px;
+}
+
+ul {
+  bottom: 60px;
+  left: 31%;
+  /* right: 50%; */
+}
+
+li {
+  padding: 1% 2%;
+  margin: 0px 70px;
 }
 }
 
