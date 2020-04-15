@@ -134,7 +134,7 @@ p {
 
 h1 {
     font-size: 3em;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
 }
 
 .back {
