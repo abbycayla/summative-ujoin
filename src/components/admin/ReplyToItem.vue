@@ -2,9 +2,9 @@
   <div class="reply-to-item"> 
       <HeaderConference/>
       <div class="reply-heading">
-          <div class="heading-button">
+          <!-- <div class="heading-button">
         <router-link v-bind:to="'/all-items-user'"> <img class="back" src="@/assets/back-light.png"> </router-link> 
-      </div>
+      </div> -->
       <div class="heading-title">
       <h1> Question Asked By: </h1>
       </div>
@@ -51,14 +51,14 @@ h1 {
     text-align: center;
     font-size: 2em;
     font-weight: lighter; 
-    margin: 0px 20px;
+    margin: 0px 10px;
 }
 
 h2 {
     font-size: 1.2em;
     font-weight: 400;
     text-align: center;
-    padding-bottom: 30px;
+    padding-bottom: 10px;
 }
 
 .textarea-wrapper {
@@ -86,6 +86,7 @@ textarea {
     margin-right: auto;
     margin-left: auto;
     margin-top: 13px;
+    /* font-weight: lighter; */
 }
 
 .submit a {
@@ -93,10 +94,10 @@ textarea {
     color: white;
 }
 
-.back {
+/* .back {
     margin-top: 8px;
     width: 30px;
-}
+} */
 
 
 
