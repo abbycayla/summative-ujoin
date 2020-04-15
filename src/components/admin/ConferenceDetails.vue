@@ -71,7 +71,7 @@ li a {
     font-size: 1.2em;
     text-decoration: none;
     color: #28313f;
-    font-weight: lighter;
+    /* font-weight: lighter; */
 }
 
 
@@ -147,27 +147,15 @@ ul {
 }
 
 li {
-  padding: 5px 7px;
+  padding: 4px 7px;
   margin: 0px 70px;
   font-size: 1.5em;
 }
 
-.submit {
-    
-    border: none;
-    background-color: #4baced;
-    outline: none;
-    display: block;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 20px;
+.host {
+  padding-top: 20px;
 }
 
-.submit a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.5em;
-}
 }
 
 </style>
