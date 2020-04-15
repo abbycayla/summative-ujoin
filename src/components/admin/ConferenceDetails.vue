@@ -45,9 +45,9 @@ export default {
 }
 
 h1 {
-    text-align: center;
+     text-align: center;
     font-size: 2em;
-    font-weight: lighter; 
+    font-weight: 400; 
     margin: 0px 20px;
 }
 
@@ -74,8 +74,10 @@ li a {
     font-weight: lighter;
 }
 
+
+
 .host{
-    background-color: #54a9de;
+    background-color: #4baced;
 }
 
 .edit{
@@ -93,21 +95,16 @@ li a {
 
 .conference-details-content {
   margin: 0% 20%;
-  /* display: flex; */
   padding-top: 30px;
-  /* align-items: center; */
-  /* flex-direction: column ; */
   text-align: left;
 }
 
 .conference-details-content div {
   padding: 18px 0px;
-  /* margin: 10px 0px; */
 }
 
 h2 {
   font-size: 1.2em;
-  /* font-weight: lighter; */
   padding-bottom: 10px;
 }
 
@@ -127,7 +124,7 @@ p {
   }
 
   h1 {
-    font-size: 3.2em;
+      font-size: 3em;
 }
 
 .conference-details-content {
@@ -144,13 +141,32 @@ h2 {
 
 ul {
   bottom: 60px;
-  left: 31%;
+  left: 24%;
+  width: 60%;
   /* right: 50%; */
 }
 
 li {
-  padding: 1% 2%;
+  padding: 5px 7px;
   margin: 0px 70px;
+  font-size: 1.5em;
+}
+
+.submit {
+    
+    border: none;
+    background-color: #4baced;
+    outline: none;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 20px;
+}
+
+.submit a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5em;
 }
 }
 
