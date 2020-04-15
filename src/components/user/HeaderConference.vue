@@ -22,7 +22,7 @@ export default {
     color: #454c45;
     background-color: white;
     padding: 30px 40px;
-    margin-bottom: 7%;
+    margin-bottom: 6%;
 }
 
 h1 {
