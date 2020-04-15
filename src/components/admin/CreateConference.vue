@@ -119,6 +119,11 @@ input {
   padding-top: 0px;
 }
 
+.submit {
+  font-size: 1.5em;
+  /* padding: 10px 5px; */
+}
+
 }
 
 </style>
