@@ -31,7 +31,7 @@ h1 {
 }
 
 .header img {
-    width: 80px;
+    width: 100px;
 }
 
 

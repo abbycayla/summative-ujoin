@@ -12,7 +12,7 @@
           <label> Name </label> <br />
           <input type="text"> <br />
           <label> Description </label> <br />
-          <input type="text"> <br />
+          <input class="description" type="text"> <br />
           <label> User Entrance Code </label> <br />
           <input type="text"> <br />
         </form>
@@ -67,19 +67,17 @@ h1 {
     padding: 5px 7px;
     border: none;
     background-color: #4baced;
-    color: white;
     outline: none;
-    font-size: 20px;
     display: block;
     margin-right: auto;
     margin-left: auto;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 .submit a {
     color: white;
     text-decoration: none;
-    font-weight: lighter;
+    font-size: 1.5em;
 }
 
 label {
@@ -96,8 +94,12 @@ label {
 
 input {
   margin: 5px 0px 20px 0px;
-  border: 1.3px solid #454c45;
-  padding: 10px 0px;
+  border: 1px solid #2b313f;
+  padding: 10px 30px;
+}
+
+.description {
+  padding: 40px 30px;
 }
 
 @media only screen and (min-width: 768px) {
@@ -106,13 +108,18 @@ input {
     margin: 10px 0px 20px 0px;
   }
 
+  .description {
+    padding: 40px 200px;
+  }
+
   h1 {
     font-size: 3em;
 }
 
 .form {
-  padding-top: 20px;
+  padding-top: 0px;
 }
+
 }
 
 </style>
