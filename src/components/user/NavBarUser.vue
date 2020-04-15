@@ -57,7 +57,7 @@ li a {
     }
 
     li {
-        padding: 1% 14%;
+        padding: 1% 12%;
         font-size: 1.3em;
         text-align: center;
     }

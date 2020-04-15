@@ -2,6 +2,7 @@
   <div class="create-item"> 
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
       <HeaderConference/>
+      <!-- <HeaderAdmin/> -->
       <div class="create-item-heading">
             <div class="heading-button">
                 <router-link v-bind:to="'/all-items-user'"> <img class="back" src="@/assets/back-light.png"> </router-link> 
@@ -12,7 +13,7 @@
       </div>
       <div class="create-item-body">
           <div class="body-textarea">
-            <textarea name="question" cols="30" rows="15" placeholder="Write question here..."></textarea>
+            <textarea name="question" cols="30" rows="10" placeholder="Write question here..."></textarea>
             </div>
             <div>
             <p> Questions are being monitored. If your question is inappropriate, it will be deleted.</p>
@@ -26,6 +27,7 @@
 <script>
 import NavBarUser from "./NavBarUser"
 import HeaderConference from "./HeaderConference"
+// import HeaderAdmin from "../admin/HeaderAdmin"
 
 export default {
 
@@ -33,6 +35,7 @@ export default {
     components:{
         NavBarUser,
         HeaderConference
+        // HeaderAdmin
     }
 }
 </script>
@@ -86,7 +89,7 @@ button {
     /* height: 100%; */
     display: flex;
     justify-content: center;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 
 textarea {
@@ -100,10 +103,10 @@ textarea {
 
 p {
     text-align: center;
-    margin: 0px 20%;
+    margin: 0px 15%;
     font-weight: lighter;
     font-size: .9em;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
 .submit {
@@ -125,7 +128,7 @@ p {
 
 @media only screen and (min-width: 768px) {
 .body-textarea {
-    margin-bottom: 60px;
+    margin-bottom: 50px;
 }
 
     textarea {
@@ -134,13 +137,17 @@ p {
 
 h1 {
     font-size: 3em;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
 }
 
 .back {
     margin-top: 10px;
     margin-right: 10px;
     width: 50px;
+}
+
+p {
+    margin-bottom: 40px;
 }
 
 }
