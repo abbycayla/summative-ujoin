@@ -113,10 +113,16 @@ p {
     padding: 5px 7px;
     border: none;
     background-color: #4baced;
-    color: white;
     outline: none;
-    font-size: 20px;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 20px;
+     color: white;
+    text-decoration: none;
+    font-size: 1.5em;
 }
+
 
 
 .back {
@@ -148,6 +154,10 @@ h1 {
 
 p {
     margin-bottom: 40px;
+}
+
+.submit a{
+    font-size: 1.7em;
 }
 
 }
