@@ -82,17 +82,17 @@ textarea {
     color: white;
     outline: none;
     font-size: 20px;
-     display: block;
+    display: block;
     margin-right: auto;
     margin-left: auto;
-    margin-top: 13px;
-    /* font-weight: lighter; */
+    margin-top: 10px;
 }
 
 .submit a {
-    text-decoration: white;
     color: white;
+    text-decoration: none;
 }
+
 
 /* .back {
     margin-top: 8px;
