@@ -6,31 +6,87 @@
       <h1> Create a Conference </h1>
       </div>
       </div>
+      <div v-if="errors.length">
+      Please correct the following error(s):
+      <ul>
+        <li v-for="error in errors" :key="error">{{ error }}</li>
+      </ul>
+    </div>
       <div class="form">
         <div>
-        <form>
-          <label> Name </label> <br />
-          <input type="text"> <br />
-          <label> Description </label> <br />
-          <input class="description" type="text"> <br />
-          <label> User Entrance Code </label> <br />
-          <input type="text"> <br />
+        <form v-on:submit="checkForm">
+          <label for="title"> Name </label> <br />
+          <input v-model="event.title" type="text"> <br />
+          <label for="body"> Description </label> <br />
+          <input v-model="event.body"  class="description" type="text"> <br />
+          <label for="code"> User Entrance Code </label> <br />
+          <input v-model="event.code" type="text"> <br />
+            <input class="submit" type="submit" value="Create"> <router-link v-bind:to="'/conference-details'"> Create </router-link>
         </form>
-          <button class="submit"> <router-link v-bind:to="'/conference-details'"> Create </router-link> </button>
         </div>
       </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+import * as config from "../../../config";
 
 import HeaderAdmin from "./HeaderAdmin.vue"
 export default {
     name: "CreateConference",
     components: {
       HeaderAdmin
+    }, 
+    data: function(){
+      return{
+      event: {
+        title: '',
+        body: '',
+        code: ''
+      },
+      errors:  []
+      }
+    },
+    methods: {
+    checkForm: function(evt) {
+      evt.preventDefault();
+
+      this.errors = [];
+
+      if (!this.event.title) {
+        this.errors.push("Title required");
+      }
+      if (!this.event.body) {
+        this.errors.push("Body required");
+      }
+      if (!this.event.code) {
+        this.errors.push("Code required");
+      }
+      if (!this.errors.length) {
+        this.createEvent();
+        // if (isEdit) {
+        //   this.updateArticle();
+        // } else {
+        //   this.createArticle();
+        // }
+      }
+    },
+    createEvent: function() {
+      let userId = localStorage.getItem('userId')
+      return axios
+        .post(`${config.apiUrl}/users/${userId}/events`, this.event)
+        .then(() => {
+          this.$router.push({ path: "/conference-details" });
+        })
+        .catch(function(error) {
+          // handle error
+          console.log(error);
+        });
     }
 }
+}
+
 </script>
 
 <style scoped>
@@ -61,6 +117,7 @@ h1 {
     margin-left: auto;
     margin-top: 8px;
 }
+
 
 .submit {
     padding: 5px 7px;
@@ -123,7 +180,7 @@ input {
   font-size: 1.5em;
   /* padding: 10px 5px; */
 }
-
 }
+
 
 </style>
