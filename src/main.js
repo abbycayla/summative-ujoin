@@ -68,9 +68,11 @@ const routes = [
     component: CreateConference,
   },
   {
-    path: '/conference-details',
+    path: '/event/:eventId/details',
     component: ConferenceDetails,
-    name: "ConferenceDetails"
+    name: "ConferenceDetails",
+    props: true
+
   },
   {
     path: '/edit-conference',

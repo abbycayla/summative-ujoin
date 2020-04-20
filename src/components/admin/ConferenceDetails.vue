@@ -5,15 +5,16 @@
       <div class="conference-details-content">
       <div class="conference-name">
         <h2> Conference Name </h2>
-        <p> (name) </p>
+        <p> {{event.title}} </p>
+          <h2>{{ event.title }}</h2>
       </div>
       <div class="conference-description">
-        <h2> Conference Description </h2>
-        <p> (description) </p>
+        <h2 for="title"> Conference Description </h2>
+        <p >{{event.body}} </p>
       </div>
       <div class="conference-code">
         <h2> User Entrance Code </h2>
-        <input class="user-entrance-code" v-model="event.code" > (code)
+        <input class="user-entrance-code" v-model="event.code" value="event.code"> 
           </div>
       </div>
       <ul class="buttons-nav">
@@ -36,31 +37,31 @@ export default {
     }, 
     data: function(){
       return{
-      event: {
-        title: '',
-        body: '',
-        code: ''
-      },
-      errors:  []
+       event: {},
       }
     },
+     methods: {
     getEventDetails: function(eventId) {
       let userId = localStorage.getItem('userId')
       return axios
-        .get(`${config.apiUrl}/${userId}/events/${eventId}`)
-        .then(function(response) {
-          return response.data.event;
+        .get(`${config.apiUrl}/users/${userId}/events/${eventId}`)
+        .then(function(data) {
+          this.event = data.body.event;
         })
-    },
-      created: async function() {
-    const eventId = this.$route.params.eventId;
-    if (eventId) {
-      this.event = await this.getEventDetails(eventId);
+        .catch(function(error) {
+          // handle error
+          console.log(error);
+        });
     }
+  }, created: function() {
+    console.log('created')
+    const eventId = this.$route.params.eventId;
+    this.getEventDetails(eventId);
+  }
     
   }
 
-}
+
 </script>
 
 <style scoped>

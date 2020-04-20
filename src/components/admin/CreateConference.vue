@@ -18,10 +18,11 @@
           <label for="title"> Name </label> <br />
           <input v-model="event.title" type="text"> <br />
           <label for="body"> Description </label> <br />
+          <p> {{event.title}}</p>
           <input v-model="event.body"  class="description" type="text"> <br />
           <label for="code"> User Entrance Code </label> <br />
           <input v-model="event.code" type="text"> <br />
-            <input class="submit" type="submit" value="Create"> <router-link v-bind:to="'/conference-details'"> Create </router-link>
+            <input class="submit" type="submit" value="Create">
         </form>
         </div>
       </div>
@@ -78,14 +79,35 @@ export default {
         .post(`${config.apiUrl}/users/${userId}/events`, this.event)
         .then(() => {
           this.$router.push({ path: "/conference-details" });
+           localStorage.eventTitle = event.title
+        })
+        .catch(function(error) {
+          // handle error
+          console.log(error);
+        });
+    },
+    getEvent: function(eventId) {
+      return axios
+        .get(`${config.apiUrl}/events/${eventId}`)
+        .then(function(response) {
+          return response.data.event;
         })
         .catch(function(error) {
           // handle error
           console.log(error);
         });
     }
+  },
+  created: async function() {
+        const eventId = this.$route.params.eventId;
+    if (eventId) {
+      this.event = await this.getEventDetails(eventId);
+
+    }
+    
+  }
 }
-}
+
 
 </script>
 
