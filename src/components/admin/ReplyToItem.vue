@@ -2,14 +2,19 @@
   <div class="reply-to-item"> 
       <HeaderConference/>
       <div class="reply-heading">
-          <div class="heading-button">
+          <!-- <div class="heading-button">
         <router-link v-bind:to="'/all-items-user'"> <img class="back" src="@/assets/back-light.png"> </router-link> 
-      </div>
+      </div> -->
       <div class="heading-title">
       <h1> Question Asked By: </h1>
       </div>
       </div>
-      <button> <router-link v-bind:to="'/all-items-admin'"> Submit </router-link> </button>
+      <h2> Username </h2>
+      <div class="textarea-wrapper">
+      <textarea name="question" cols="460" rows="5"></textarea>
+      <textarea name="reply" cols="30" rows="5"></textarea>
+      </div>
+      <button class="submit"> <router-link v-bind:to="'/all-items-admin'"> Submit </router-link> </button>
       <NavBarAdmin/>
   </div>
 </template>
@@ -38,85 +43,93 @@ export default {
 .reply-heading {
     display: flex;
     justify-content: center;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     /* margin: 0% 50%; */
 }
 
 h1 {
     text-align: center;
-    font-size: 1.5em;
+    font-size: 2em;
     font-weight: lighter; 
-    margin: 0px 20px;
+    margin: 0px 10px;
 }
 
-button {
-    display: block;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 13px;
+h2 {
+    font-size: 1.2em;
+    font-weight: 400;
+    text-align: center;
+    padding-bottom: 10px;
 }
 
-.body-textarea {
-    width: 100%;
-    /* height: 100%; */
+.textarea-wrapper {
     display: flex;
-    justify-content: center;
-    margin-bottom: 40px;
+    flex-direction: column;
+    align-items: center;
 }
 
 textarea {
+    margin: 15px 0px;
     border: none;
     padding: 20px;
     width: 70%;
     outline: none;
-    /* height: 50%; */
-    /* border-radius: 10%; */
-}
-
-p {
-    text-align: center;
-    margin: 0px 20%;
-    font-weight: lighter;
-    font-size: .9em;
-    margin-bottom: 40px;
 }
 
 .submit {
-    padding: 5px 10px;
+    padding: 5px 7px;
     border: none;
-    background-color: #54a9de;
-    color: #f2f2f2;
-    box-shadow: 3px 5px 5px rgb(49, 49, 49);
+    background-color: #4baced;
+    color: white;
     outline: none;
-    font-size: 1.2em;
-    font-weight: lighter;
+    font-size: 20px;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 10px;
 }
 
-.back {
+.submit a {
+    color: white;
+    text-decoration: none;
+}
+
+
+/* .back {
     margin-top: 8px;
     width: 30px;
-}
+} */
 
 
 
 @media only screen and (min-width: 768px) {
-.body-textarea {
-    margin-bottom: 60px;
-}
 
-    textarea {
+ textarea {
     width: 50%;
 }
 
 h1 {
-    font-size: 3em;
-    padding-bottom: 20px;
+     font-size: 3.2em;
+}
+
+h2 {
+    font-size: 1.5em;
 }
 
 .back {
     margin-top: 10px;
     margin-right: 10px;
     width: 50px;
+}
+
+ul {
+  bottom: 60px;
+  left: 31%;
+  /* right: 50%; */
+}
+
+li {
+  padding: 1% 2%;
+  margin: 0px 70px;
 }
 
 }
