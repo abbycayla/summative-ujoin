@@ -13,8 +13,8 @@
       </div>
       <div class="conference-code">
         <h2> User Entrance Code </h2>
-        <p class="user-entrance-code"> (code) </p>
-      </div>
+        <input class="user-entrance-code" v-model="event.code" > (code)
+          </div>
       </div>
       <ul class="buttons-nav">
       <li class="edit"> <router-link v-bind:to="'/edit-conference'"> Edit <br/> Conference </router-link> </li>
@@ -24,6 +24,8 @@
 </template>
 
 <script>
+import axios from "axios";
+import * as config from "../../../config";
 
 import HeaderAdmin from "./HeaderAdmin.vue"
 
@@ -31,7 +33,33 @@ export default {
     name: "ConferenceDetails",
     components: {
       HeaderAdmin
+    }, 
+    data: function(){
+      return{
+      event: {
+        title: '',
+        body: '',
+        code: ''
+      },
+      errors:  []
+      }
+    },
+    getEventDetails: function(eventId) {
+      let userId = localStorage.getItem('userId')
+      return axios
+        .get(`${config.apiUrl}/${userId}/events/${eventId}`)
+        .then(function(response) {
+          return response.data.event;
+        })
+    },
+      created: async function() {
+    const eventId = this.$route.params.eventId;
+    if (eventId) {
+      this.event = await this.getEventDetails(eventId);
     }
+    
+  }
+
 }
 </script>
 
