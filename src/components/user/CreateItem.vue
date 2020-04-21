@@ -11,13 +11,17 @@
                 <h1> Ask a Question </h1>
             </div>
       </div>
-      <div class="create-item-body">
+      <div class="create-item-body " >
           <div class="body-textarea">
-            <textarea name="question" cols="30" rows="10" placeholder="Write question here..."></textarea>
+              <form  v-on:submit="checkForm">
+            <!-- <textarea name="question" cols="30" rows="10" placeholder="Write question here..."></textarea> -->
+            <input  v-model="event.body" value="stuff">
+                        <input class="submit" type="submit" value="Submit">
+
+            </form>
             </div>
-            <div>
+            <div> 
             <p> Questions are being monitored. If your question is inappropriate, it will be deleted.</p>
-            <button class="submit"> Submit </button>
             </div>
       </div>
       <NavBarUser/>
@@ -25,9 +29,6 @@
 </template>
 
 <script>
-import NavBarUser from "./NavBarUser"
-import HeaderConference from "./HeaderConference"
-// import HeaderAdmin from "../admin/HeaderAdmin"
 
 export default {
 
@@ -35,9 +36,9 @@ export default {
     components:{
         NavBarUser,
         HeaderConference
-        // HeaderAdmin
     }
 }
+
 </script>
 
 <style scoped>

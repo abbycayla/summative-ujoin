@@ -78,6 +78,8 @@ export default {
         .post(`${config.apiUrl}/users/${userId}/events`, this.event)
         .then(() => {
           this.$router.push({ path: "/conference-details" });
+          localStorage.eventId = event.id
+
         })
         .catch(function(error) {
           // handle error
