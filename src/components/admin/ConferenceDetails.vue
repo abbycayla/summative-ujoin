@@ -6,15 +6,14 @@
       <div class="conference-name">
         <h2> Conference Name </h2>
         <p> {{event.title}} </p>
-          <h2>{{ event.title }}</h2>
       </div>
       <div class="conference-description">
-        <h2 for="title"> Conference Description </h2>
+        <h2> Conference Description </h2>
         <p >{{event.body}} </p>
       </div>
       <div class="conference-code">
         <h2> User Entrance Code </h2>
-        <input class="user-entrance-code" v-model="event.code" value="event.code"> 
+        <p> {{event.code}} </p>
           </div>
       </div>
       <ul class="buttons-nav">
@@ -37,29 +36,34 @@ export default {
     }, 
     data: function(){
       return{
-       event: {},
+       event: {
+      
+      },
       }
     },
      methods: {
-    getEventDetails: function(eventId) {
+    getEvent: function(eventId) {
       let userId = localStorage.getItem('userId')
+    // const eventId = this.$route.params.eventId
       return axios
         .get(`${config.apiUrl}/users/${userId}/events/${eventId}`)
-        .then(function(data) {
-          this.event = data.body.event;
+        .then(function (response) {
+          return response.data.event;
+          // console.log(event)
         })
-        .catch(function(error) {
-          // handle error
-          console.log(error);
-        });
+        .catch(function(error){
+          console.log(error)
+        })
     }
-  }, created: function() {
-    console.log('created')
-    const eventId = this.$route.params.eventId;
-    this.getEventDetails(eventId);
-  }
     
   }
+   , created: async function() {
+    const eventId = this.$route.params.eventId
+    console.log('created', eventId)
+      this.event = await this.getEvent(eventId)
+      console.log(this.event)
+   },
+}
 
 
 </script>
@@ -67,7 +71,6 @@ export default {
 <style scoped>
 
 .conference-details {
-    /* background-color: #454c45; */
     height: 100vh;
     color: #454c45;
     font-family: 'Open Sans', sans-serif;
@@ -100,7 +103,6 @@ li a {
     font-size: 1.2em;
     text-decoration: none;
     color: #28313f;
-    /* font-weight: lighter; */
 }
 
 

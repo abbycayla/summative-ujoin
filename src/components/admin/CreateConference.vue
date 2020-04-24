@@ -18,9 +18,8 @@
           <label for="title"> Name </label> <br />
           <input v-model="event.title" type="text"> <br />
           <label for="body"> Description </label> <br />
-          <p> {{event.title}}</p>
           <input v-model="event.body"  class="description" type="text"> <br />
-          <label for="code"> User Entrance Code </label> <br />
+          <label for="code"> event Entrance Code </label> <br />
           <input v-model="event.code" type="text"> <br />
             <input class="submit" type="submit" value="Create">
         </form>
@@ -38,7 +37,7 @@ export default {
     name: "CreateConference",
     components: {
       HeaderAdmin
-    }, 
+    },
     data: function(){
       return{
       event: {
@@ -66,47 +65,51 @@ export default {
       }
       if (!this.errors.length) {
         this.createEvent();
-        // if (isEdit) {
-        //   this.updateArticle();
-        // } else {
-        //   this.createArticle();
-        // }
+        // this.getEvent()
       }
     },
+
+
+
+
+
     createEvent: function() {
       let userId = localStorage.getItem('userId')
       return axios
         .post(`${config.apiUrl}/users/${userId}/events`, this.event)
-        .then(() => {
-          this.$router.push({ path: "/conference-details" });
-           localStorage.eventTitle = event.title
-        })
+      .then((response) => {
+        const event = response.data.event
+        console.log(event)
+      // this.getEventDetails(eventId)
+    this.$router.push({ name: "details", params: {eventId: event.id} });
+    console.log(this.$route.params)
+ })
         .catch(function(error) {
           // handle error
           console.log(error);
         });
-    },
-    getEvent: function(eventId) {
-      return axios
-        .get(`${config.apiUrl}/events/${eventId}`)
-        .then(function(response) {
-          return response.data.event;
-        })
-        .catch(function(error) {
-          // handle error
-          console.log(error);
-        });
-    }
-  },
-  created: async function() {
-        const eventId = this.$route.params.eventId;
-    if (eventId) {
-      this.event = await this.getEventDetails(eventId);
+    }, 
 
-    }
-    
-  }
+
+
+  //   getEvent: function(eventId) {
+  //     let userId = localStorage.getItem('userId')
+  //     return axios
+  //       .get(`${config.apiUrl}/users/${userId}/events/${eventId}`)
+  //       .then(function (response) {
+  //       return response.data.event
+  //       })
+  //   }
+  // , created: async function() {
+  //   const eventId = this.$route.params.eventId
+  //   if(eventId){
+  //     this.event = await this.getEvent(eventId)
+  //   }
+  //  }
 }
+}
+
+
 
 
 </script>

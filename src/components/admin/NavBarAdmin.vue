@@ -2,7 +2,7 @@
   <div> 
       <ul>
           <li class="all-questions"> <router-link v-bind:to="'/all-items-admin'"> All <br /> Questions </router-link> </li>
-          <li class="end-conference"> <router-link v-bind:to="'/conference-details'"> End  <br /> Conference  </router-link> </li>
+          <li class="end-conference"> <router-link v-bind:to="'/conference-details/:eventId'"> End  <br /> Conference  </router-link> </li>
       </ul>
   </div>
 </template>

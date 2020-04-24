@@ -28,7 +28,7 @@ import ReplyToItem from './components/admin/ReplyToItem.vue';
 Vue.config.productionTip = false
 Vue.use(VueRouter);
 Vue.use(VueResource);
-
+// Vue.use(Router)
 
 const routes = [
   {
@@ -66,11 +66,13 @@ const routes = [
   {
     path: '/create-conference',
     component: CreateConference,
+    // params: true
   },
   {
-    path: '/event/:eventId/details',
+    path: '/conference-details/:eventId',
+    name: 'details',
     component: ConferenceDetails,
-    name: "ConferenceDetails",
+    // params: true,
     props: true
 
   },
