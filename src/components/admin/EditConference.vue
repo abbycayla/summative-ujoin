@@ -15,6 +15,7 @@
 </template>
 
 <script>
+// 5ea0f9456ed62542b0f7dde7 hard coded event id
 export default {
     name: "EditConference",
 }
