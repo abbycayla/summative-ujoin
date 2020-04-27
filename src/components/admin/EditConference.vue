@@ -9,13 +9,13 @@
   <div class="button">
     <p>Submit</p>
   </div>
-      <button> <router-link v-bind:to="'/conference-details'"> Back </router-link> </button>
+      <button> <router-link v-bind:to="'/conference-details/:eventId'"> Back </router-link> </button>
+
       <button> <router-link v-bind:to="'/create-conference'"> Delete </router-link> </button>
   </div>
 </template>
 
 <script>
-// 5ea0f9456ed62542b0f7dde7 hard coded event id
 export default {
     name: "EditConference",
 }
