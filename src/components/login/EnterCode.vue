@@ -246,5 +246,3 @@ input::placeholder {
   
 
 
-
-</style>

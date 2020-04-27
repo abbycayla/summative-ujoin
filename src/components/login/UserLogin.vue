@@ -30,6 +30,7 @@ export default {
 
 <style scoped>
 
+
 input {
 border: solid 1px #2B313F;
 outline: none;
@@ -147,6 +148,5 @@ input::placeholder {
 
  }
   
-
 
 </style>

@@ -28,16 +28,55 @@
 </template>
  
 <script>
-import NavBarUser from "./NavBarUser"
+import axios from "axios";
+import * as config from "../../../config";
+ 
 export default {
+ name: "CreateItem",
+ components: {
  
-    name: "CreateItem",
-    components:{
-        NavBarUser,
+ },
+ data: function(){
+ return{
+ item: {
+ body: ''
+ },
+ errors: []
+ }
+ },
+ methods: {
+ checkForm: function(evt) {
+ evt.preventDefault();
+ 
+ this.errors = [];
+ 
+ if (!this.item.body) {
+ this.errors.push("Body required");
+ }
+ if (!this.errors.length) {
+ this.createItem();
+ }
+ },
 
-    }
-}
- 
+ createItem: function() {
+ let userId = localStorage.getItem('userId')
+ let eventId = localStorage.getItem('eventId')
+ return axios
+ .post(`${config.apiUrl}/users/${userId}/events/${eventId}/items`, this.item)
+ .then((response) => {
+ const item = response.data.item
+ console.log(item)
+ // this.getEventDetails(eventId)
+ this.$router.push({ path: "/my-items"});
+ console.log(this.$route.params)
+ })
+ .catch(function(error) {
+ // handle error
+ console.log(error);
+ });
+ }, 
+
+
 </script>
 
  
