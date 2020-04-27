@@ -1,5 +1,6 @@
 <template>
   <div class="create-conference"> 
+
     <HeaderAdmin/>
     <div class="create-conference-heading">
       <div>
@@ -27,16 +28,18 @@
       </div>
   </div>
 </template>
-
+ 
 <script>
 import axios from "axios";
 import * as config from "../../../config";
+
 import HeaderAdmin from "./HeaderAdmin.vue"
 export default {
     name: "CreateConference",
     components: {
       HeaderAdmin
     },
+
     data: function(){
       return{
       event: {
@@ -50,7 +53,10 @@ export default {
     methods: {
     checkForm: function(evt) {
       evt.preventDefault();
+
+
       this.errors = [];
+
       if (!this.event.title) {
         this.errors.push("Title required");
       }
@@ -63,6 +69,7 @@ export default {
       if (!this.errors.length) {
         this.createEvent();
         // this.getEvent()
+
       }
     },
     createEvent: function() {
@@ -84,20 +91,6 @@ export default {
           console.log(error);
         });
     }, 
-  //   getEvent: function(eventId) {
-  //     let userId = localStorage.getItem('userId')
-  //     return axios
-  //       .get(`${config.apiUrl}/users/${userId}/events/${eventId}`)
-  //       .then(function (response) {
-  //       return response.data.event
-  //       })
-  //   }
-  // , created: async function() {
-  //   const eventId = this.$route.params.eventId
-  //   if(eventId){
-  //     this.event = await this.getEvent(eventId)
-  //   }
-  //  }
 }
 }
 </script>
@@ -199,3 +192,4 @@ input {
 
 
 </style>
+
