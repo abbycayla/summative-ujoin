@@ -13,6 +13,7 @@ import AllItemsUser from './components/user/AllItemsUser.vue';
 import MyItems from './components/user/MyItems.vue';
 import CreateItem from './components/user/CreateItem.vue';
 import EditItem from './components/user/EditItem.vue';
+import ItemDetail from './components/user/ItemDetail.vue';
 
 //ADMIN
 import AllItemsAdmin from './components/admin/AllItemsAdmin.vue';
@@ -38,18 +39,30 @@ const routes = [
   {
     path: '/enter-code',
     component: EnterCode,
+    // props: true,
+    name: "enter code"
   },
   {
     path: '/admin-login',
     component: AdminLogin,
   },
   {
+    // name: "allitems",
+    // props: true,
     path: '/all-items-user',
     component: AllItemsUser,
   },
   {
+    // name: "newQuestion",
     path: '/my-items',
     component: MyItems,
+    props: true,
+  }, 
+  {
+    name: "itemDetail",
+    path: '/item-detail/:itemId',
+    component: ItemDetail,
+    props: true,
   },
   {
     path: '/create-item',
@@ -72,7 +85,6 @@ const routes = [
     path: '/conference-details/:eventId',
     name: 'details',
     component: ConferenceDetails,
-    // params: true,
     props: true
 
   },

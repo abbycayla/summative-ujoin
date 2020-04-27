@@ -26,9 +26,7 @@
 <script>
 import axios from "axios";
 import * as config from "../../../config";
-
 import HeaderAdmin from "./HeaderAdmin.vue"
-
 export default {
     name: "ConferenceDetails",
     components: {
@@ -64,25 +62,20 @@ export default {
       console.log(this.event)
    },
 }
-
-
 </script>
 
 <style scoped>
-
 .conference-details {
     height: 100vh;
     color: #454c45;
     font-family: 'Open Sans', sans-serif;
 }
-
 h1 {
      text-align: center;
     font-size: 2em;
     font-weight: 400; 
     margin: 0px 20px;
 }
-
 ul {
   position: absolute;
   bottom: 0;
@@ -90,7 +83,6 @@ ul {
   display: flex;
   background-color: white;
 }
-
 li {
     padding: 5% 10px;
     text-align: center;
@@ -98,95 +90,72 @@ li {
     list-style-type: none;
     width: 220px;
 }
-
 li a {
     font-size: 1.2em;
     text-decoration: none;
     color: #28313f;
 }
-
-
-
 .host{
     background-color: #4baced;
 }
-
 .edit{
     background-color: #454c45;
 }
-
-
 .host a, .edit a {
   color: white;
 }
-
 .host {
   padding-top: 30px;
 }
-
 .conference-details-content {
   margin: 0% 20%;
   padding-top: 30px;
   text-align: left;
 }
-
 .conference-details-content div {
   padding: 18px 0px;
 }
-
 h2 {
   font-size: 1.2em;
   padding-bottom: 10px;
 }
-
 p {
   font-size: 1.2em;
   font-weight: lighter;
 }
-
 .user-entrance-code {
   font-weight: bold;
 }
-
 @media only screen and (min-width: 768px) {
   input {
     padding: 15px 200px;
     margin: 10px 0px 20px 0px;
   }
-
   h1 {
       font-size: 3em;
 }
-
 .conference-details-content {
   margin: 0% 28%;
 }
-
 h2 {
     font-size: 1.5em;
 }
-
 .form {
   padding-top: 20px;
 }
-
 ul {
   bottom: 60px;
   left: 24%;
   width: 60%;
   /* right: 50%; */
 }
-
 li {
   padding: 4px 7px;
   margin: 0px 70px;
   font-size: 1.5em;
 }
-
 .host {
   padding-top: 20px;
 }
-
 }
-
 </style>

@@ -31,7 +31,6 @@
 <script>
 import axios from "axios";
 import * as config from "../../../config";
-
 import HeaderAdmin from "./HeaderAdmin.vue"
 export default {
     name: "CreateConference",
@@ -51,9 +50,7 @@ export default {
     methods: {
     checkForm: function(evt) {
       evt.preventDefault();
-
       this.errors = [];
-
       if (!this.event.title) {
         this.errors.push("Title required");
       }
@@ -68,11 +65,6 @@ export default {
         // this.getEvent()
       }
     },
-
-
-
-
-
     createEvent: function() {
       let userId = localStorage.getItem('userId')
       return axios
@@ -80,6 +72,9 @@ export default {
       .then((response) => {
         const event = response.data.event
         console.log(event)
+        if (event){
+          localStorage.eventId = event.id
+        }
       // this.getEventDetails(eventId)
     this.$router.push({ name: "details", params: {eventId: event.id} });
     console.log(this.$route.params)
@@ -89,9 +84,6 @@ export default {
           console.log(error);
         });
     }, 
-
-
-
   //   getEvent: function(eventId) {
   //     let userId = localStorage.getItem('userId')
   //     return axios
@@ -108,11 +100,9 @@ export default {
   //  }
 }
 }
-
-
-
-
 </script>
+
+
 
 <style scoped>
 .create-conference {
