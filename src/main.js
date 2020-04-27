@@ -54,12 +54,17 @@ const routes = [
     component: AllItemsUser,
   },
   {
-    path: '/my-items',
+    path: '/my-items/:itemId',
+    name: "newQuestion",
     component: MyItems,
+    props: true
+    
+    
   },
   {
     path: '/create-item',
     component: CreateItem,
+    
   },
   {
     path: '/edit-item',
@@ -74,8 +79,10 @@ const routes = [
     component: CreateConference,
   },
   {
-    path: '/conference-details',
+    path: '/conference-details/:eventId',
+    name: "details",
     component: ConferenceDetails,
+    props: true
   },
   {
     path: '/edit-conference',

@@ -1,41 +1,115 @@
 <template>
-  <div class="create-item"> 
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-      <!-- <HeaderAdmin/> -->
-      <div class="create-item-heading">
-            <div class="heading-button">
-                <router-link > </router-link> 
-            </div>
-            <div class="heading-title">
-                <h1> Ask a Question </h1>
-            </div>
+    <div>
+    <h1>New article</h1>
+    <!-- Use case c4: Article form -->
+    <form @submit="checkForm">
+
+     <div v-if="errors.length">
+      Please correct the following error(s):
+      <ul>
+        <li v-for="error in errors" :key="error">{{ error }}</li>
+      </ul>
+    </div>
+
+      <div>
+        <label for="name">Body</label>
+        <input v-model="item.body" type="text" name="body" placeholder="Enter the article body">
       </div>
-      <div class="create-item-body " >
-          <div class="body-textarea">
-              <form  v-on:submit="checkForm">
-            <!-- <textarea name="question" cols="30" rows="10" placeholder="Write question here..."></textarea> -->
-            <input  v-model="event.body" value="stuff">
-                        <input class="submit" type="submit" value="Submit">
- 
-            </form>
-            </div>
-            <div> 
-            <p> Questions are being monitored. If your question is inappropriate, it will be deleted.</p>
-            </div>
+
+      <div>
+        <input type="submit" value="Submit">
       </div>
-   <NavBarUser/>
+
+    </form>
   </div>
 </template>
  
 <script>
-import NavBarUser from "./NavBarUser"
-export default {
+import axios from "axios";
+import * as config from "../../../config";
  
+export default {
     name: "CreateItem",
-    components:{
-        NavBarUser,
+    components: {
+  
+    },
+    data: function(){
+      return{
+      item: {
+        body: ''
+      },
+      errors:  []
+      }
+    },
+    methods: {
+    checkForm: function(evt) {
+      evt.preventDefault();
+ 
+      this.errors = [];
 
-    }
+      if (!this.item.body) {
+        this.errors.push("Body required");
+      }
+      if (!this.errors.length) {
+        this.createItem();
+      }
+    },
+//     createItem: function() {
+//       let userId = localStorage.getItem('userId')
+//       let eventId = this.event.id
+//       return axios
+//         .post(`${config.apiUrl}/users/${userId}/events/${eventId}/items`, this.item)
+//       .then((response) => {
+//         const item = response.data.item
+//         console.log(item);
+//       // this.getItemDetails(itemId)
+//     this.$router.push({ name:"questions", params: {itemId: item.id} });
+//     console.log(this.$route.params)
+//  })
+//         .catch(function(error) {
+//           // handle error
+//           console.log(error);
+//         });
+//     }, 
+ createItem: function() {
+      let userId = localStorage.getItem('userId')
+      let eventId = localStorage.getItem('eventId')
+      return axios
+       .post(`${config.apiUrl}/users/${userId}/events/${eventId}/items`,this.item)
+      .then((response) => {
+        const item = response.data.item
+        console.log(item)
+      // this.getEventDetails(eventId)
+    this.$router.push({ name: "newQuestion", params: {itemId: item.id} });
+    console.log(this.$route.params)
+ })
+        .catch(function(error) {
+          // handle error
+          console.log(error);
+        });
+    }, 
+    //  getEvent: function(eventId) {
+    //   let userId = localStorage.getItem('userId')
+    // // const eventId = this.$route.params.eventId
+    //   return axios
+    //     .get(`${config.apiUrl}/users/${userId}/events/${eventId}`)
+    //     .then(function (response) {
+    //       return response.data.event;
+    //       // console.log(event)
+    //     })
+    //     .catch(function(error){
+    //       console.log(error)
+    //     })
+    // }
+  
+    },
+  //    created: async function() {
+  //   const eventId = this.$route.params.eventId
+  //   console.log('created', eventId)
+  //     this.event = await this.getEvent(eventId)
+  //       this.item = await this.createItem(eventId)
+  //     console.log(this.event)
+  //  },
 }
  
 </script>

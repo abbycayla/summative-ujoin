@@ -25,7 +25,15 @@
 <script>
 export default {
     name: "UserLogin",
+//      created: async function() {
+//     const eventId = this.$route.params.eventId
+//     console.log('created', eventId)
+//       this.event = await this.getEvent(eventId)
+//         this.item = await this.createItem(eventId)
+//       console.log(this.event)
+//    },
 }
+
 </script>
 
 <style scoped>

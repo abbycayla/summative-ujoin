@@ -77,6 +77,7 @@ name: "Login",
             let user = response.data.user
             if (user){
             localStorage.userEmail = user.email
+            localStorage.userId = user.id
             } else {
                 //show message?
             }
