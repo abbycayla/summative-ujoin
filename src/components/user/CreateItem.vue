@@ -4,7 +4,9 @@
     <HeaderConference/>
     <div class="create-item-heading">
         <div class="heading-button">
-            <router-link v-bind:to="'/all-items-user'"> <img src="@/assets/back-light.png" alt="back-light" class="back"> </router-link>
+            <router-link v-bind:to="'/all-items-user'"> 
+                <img src="@/assets/back-light.png" alt="back-light" class="back"> 
+            </router-link>
         </div>
         <div class="heading-title">
             <h1> Ask a Question </h1>
@@ -78,18 +80,15 @@ export default {
  .then((response) => {
  const item = response.data.item
  console.log(item)
- // this.getEventDetails(eventId)
  this.$router.push({ path: "/my-items"});
  console.log(this.$route.params)
  })
  .catch(function(error) {
- // handle error
  console.log(error);
  });
  }, 
  }
 }
-
 </script>
 
  
@@ -105,8 +104,7 @@ export default {
 .create-item-heading {
     display: flex;
     justify-content: center;
-    margin-bottom: 40px;
-    
+    margin-bottom: 40px; 
 }
 
 input {
@@ -175,9 +173,11 @@ p {
 }
 
 @media only screen and (min-width: 768px) {
+
 .body-textarea {
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
+
 textarea {
     width: 50%;
 }
@@ -189,7 +189,7 @@ input {
  
 h1 {
     font-size: 3em;
-    padding-bottom: 10px;
+    padding-bottom: 0px;
 }
  
 .back {
@@ -199,7 +199,7 @@ h1 {
 }
  
 p {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
  
 .submit a{

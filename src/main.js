@@ -20,7 +20,6 @@ import AllItemsAdmin from './components/admin/AllItemsAdmin.vue';
 import CreateConference from './components/admin/CreateConference.vue';
 import ConferenceDetails from './components/admin/ConferenceDetails.vue';
 import EditConference from './components/admin/EditConference.vue';
-import ReplyToItem from './components/admin/ReplyToItem.vue';
 
 
 
@@ -94,12 +93,6 @@ const routes = [
     path: '/edit-conference',
     component: EditConference,
   },
-  {
-    name: 'replyToItem',
-    props: true,
-    path: '/reply-to-item/:itemId',
-    component: ReplyToItem,
-  }
 ]
 
 
