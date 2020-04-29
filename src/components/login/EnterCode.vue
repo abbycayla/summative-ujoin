@@ -5,17 +5,11 @@
 <button> <router-link v-bind:to="'/'"> <i class='fas fa-angle-left'></i> </router-link> </button>
       </div>
 <div>
-<img src="https://i.ibb.co/DwzHtf7/ujoin-logo2.png" alt="ujoin-logo2" border="0">
+ <img src="@/assets/ujoin-logo-light.png" alt="ujoin-logo-light">
 </div>
 
     </div>
 
-      <!-- <div class="code-info">
-<h1> Enter Code </h1>
-<p>Should be visible on screen </p>
-      <input type="text" placeholder="Enter code" />
-      <button class="join"> <router-link v-bind:to="'/all-items-user'"> Join </router-link> </button>
-      </div> -->
       <form @submit="checkForm">
   <div class="code-info">
      <h1> Enter Code  </h1>
@@ -89,14 +83,14 @@ export default {
             if (user){
             localStorage.userCode = user.code
             } else {
-                //show message
+              
             }
 
-            // console.log('user', response.data.user)
+  
           this.$router.push({ path: "/all-items-user" });
         })
         .catch(function(error) {
-          // handle error
+      
           console.log(error);
         });
     },
@@ -121,14 +115,14 @@ export default {
 
 
 .login-code i {
-  font-size: 30px;
+  font-size: 40px;
   color: #f2f2f2;
    margin: 20px 0px 0px 10px;
 }
 
 .login-code img {
 width: 50%;
-padding-left: 60px;
+margin-left: 70px;
 margin-top: 10px;
 }
 
@@ -159,10 +153,11 @@ padding: 10px 0px 10px 5px;
 .code-info p {
   text-align: center;
   font-family: 'Open Sans', sans-serif;
+  margin-top: 50px;
 }
 
 .join {
-       margin: 50px 60px 0px 60px;
+       margin: 100px 60px 0px 60px;
        padding: 5px 7px 5px 7px;
        background-color: #4BACED;
        border: none;
@@ -185,10 +180,18 @@ padding: 10px 0px 10px 5px;
 
    @media only screen and (min-width: 768px) {
 
+
 .code-info{
    margin: 200px 350px 0px 350px;
 }
 
+.code-info h1 {
+  font-size: 50px;
+}
+
+.code-info p {
+  font-size: 20px;
+}
 
 
    .join {
@@ -216,9 +219,10 @@ label {
 
 
 .login-code img {
-width: 15%;
-padding-left: 550px;
+width: 60%;
+padding-left: 490px;
 margin-top: 10px;
+margin-left: 0%;
 }
 
 
@@ -226,9 +230,9 @@ margin-top: 10px;
 
 
 .login-code i {
-  font-size: 40px;
+  font-size: 60px;
   color: #f2f2f2;
-   margin: 30px 0px 0px 20px;
+   margin: 40px 0px 0px 20px;
 }
 
 
@@ -244,5 +248,7 @@ input::placeholder {
 
  }
   
-</style>
 
+
+
+</style>

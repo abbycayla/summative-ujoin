@@ -1,164 +1,237 @@
 <template>
-
   <div>
-   
-      <h1> Edit Conference </h1>
+        <HeaderAdmin/>
+        <div class="edit-head"> 
+        <button> <router-link v-bind:to="'/conference-details/:eventId'"> <i class='fas fa-angle-left'></i> </router-link> </button>
+  
+     
       
- <button> <router-link v-bind:to="'/conference-details/:eventId'"> Back </router-link> </button>
-   <a href="#" @click.prevent="deleteEvent()"> Delete </a>
-   
-  <div class="body">
-    <h1>Edit Details</h1>
-    <div v-if="errors.length">
-      Please correct the following error(s):
-      <ul>
-        <li v-for="error in errors" :key="error">{{ error }}</li>
-      </ul>
-    </div>
-    <form @submit="checkForm">
-      <div class="box-one">
-        <label for="title">Title</label>
-        <input v-model="event.title" type="text" placeholder="Title" />
+        </div>
+          <h1> Edit Conference </h1>
+  
+  
+  <div class="form">
+        <div>
+        <form >
+          <label for="title"> Name </label> <br />
+          <input  type="text"> <br />
+          <label for="body"> Description </label> <br />
+          <input  class="description" type="text"> <br />
+          <label for="code"> Event Entrance Code </label> <br />
+          <input  type="text"> <br />
+          <div class="form-buttons">
+<button class="delete"><a href="#" @click.prevent="deleteEvent()"> Delete </a></button>
+          <input class="submit" type="submit" value="Create">
+          </div>
+          
+        </form>
+     
+        </div>
       </div>
-      <div>
-        <label for="body">Body</label>
-        <textarea v-model="event.body" name="body" cols="30" rows="10"></textarea>
-      </div>
-      <div>
-        <input type="submit" value="Submit" />
-      </div>
-    </form>
-  </div>
+    
  
   </div>
 </template>
 
+
+
 <script>
+
 import axios from "axios";
 import * as config from "../../../config";
-
+import HeaderAdmin from "./HeaderAdmin.vue"
 
 export default {
     name: "EditConference",
-   
+     components:{
+       
+          HeaderAdmin
+    },
     data: function() {
     return {
-      events: [],
-       event: {
-        title: '',
-        body: ''
-      },
-      errors: []
+      events: []
     };
   },
+  methods: {
 
-  methods:{
-     checkForm: function(evt) {
-      evt.preventDefault();
-
-      this.errors = [];
-
-      if (!this.event.title) {
-        this.errors.push("Title required");
-      }
-      if (!this.event.body) {
-        this.errors.push("Body required");
-      }
-      if (!this.errors.length) {
-        this.updateEvent()
-      }
-    },
-
-    deleteEvent: function(){
+deleteEvent: function(){
   let userId = localStorage.getItem('userId')
  let eventId = localStorage.getItem('eventId')
+ 
       return axios
         .delete(`${config.apiUrl}/users/${userId}/events/${eventId}`)
        .then((response) => {
+       
      this.$router.push({ path: "/create-conference"});
-     })
-     },
-
-    updateEvent: function() {
-      let eventId = localStorage.getItem('eventId')
-      let userId = localStorage.getItem('userId')
-      return axios
-        .put(`${config.apiUrl}/users/${userId}/events/${eventId}`, this.event)
-        .then(() => {
-          this.$router.push({ name: "details", params: {eventId: event.id} });
         })
         .catch(function(error) {
-          // handle error
           console.log(error);
         });
-    },
-    
-    getEvent: function(eventId) {
-      let userId = localStorage.getItem('userId')
-    // const eventId = this.$route.params.eventId
-      return axios
-        .get(`${config.apiUrl}/users/${userId}/events/${eventId}`)
-        .then(function (response) {
-          return response.data.event;
-          // console.log(event)
-        })
-        .catch(function(error){
-          console.log(error)
-        })
-    
-    
+    }
   }
-  }, created: async function() {
-    const eventId = this.$route.params.eventId
-    console.log('created', eventId)
-      this.event = await this.getEvent(eventId)
-      console.log(this.event)
-   },
-  
-
+ 
 }
 
 </script>
 
+
+
+
 <style scoped>
 
-.body {
-  background-color: #454c59;
-  height: 100vh;
+
+
+
+.edit-head button {
+  border: none;
+  background-color: white;
 }
 
+.edit-head i {
+  font-size: 40px;
+  color: #2B313F;
+   margin: 0px 0px 0px 10px;
+   
+}
+
+
+
+.form-buttons {
+  display: flex;
+}
+
+.form-buttons a {
+   color: white;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.delete {
+  height: 50px;
+    width: 100px;
+    border: none;
+    background-color: #4baced;
+    outline: none;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 20px;
+     color: white;
+    text-decoration: none;
+ 
+}
+
+
 h1 {
-  color: #f2f2f2;
-  text-align: center;
+    font-size: 2em;
+    font-weight: 400; 
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    margin-bottom: 20px;
+  
+}
+
+.back {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 8px;
+}
+
+.submit {
+    height: 50px;
+    width: 100px;
+    border: none;
+    background-color: #4baced;
+    outline: none;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 20px;
+     color: white;
+    text-decoration: none;
+     font-size: 20px;
+}
+.submit a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.submit:hover {
+cursor: pointer;
 }
 
 label {
-  font-size: 1em;
-  color: #f2f2f2;
-  padding-bottom: 5%;
-  padding-top: 5%;
-  margin-left: 10%;
+  margin: 50px 0px;
+  font-family: 'Open Sans', sans-serif;
 }
 
-.button {
-  background-color: #54a9de;
-  text-align: center;
-  margin-left: 40%;
-  margin-right: 40%;
-  padding-top: 5px;
-  padding-bottom: 5px;
+.error {
+    font-size: .9em;
+    font-weight: lighter;
+    text-align: center;
 }
 
-.box-one {
-  padding-bottom: 10%;
+.form {
+  display: flex;
+  justify-content: center;
+}
+
+input[type=text] {
+  margin: 5px 0px 20px 0px;
+  border: 1px solid #2b313f;
+  width: 250px;
+  height: 30px;
+  outline: none;
+  padding-left: 10px;
+}
+
+
+.description {
+  padding-bottom: 90px;
+  padding-top: 20px;
+}
+
+.description {
+  height: 60px;
 }
 
 @media only screen and (min-width: 768px) {
+.edit-head i {
+  font-size: 60px;
+ margin-left: 30px;
+ 
+}
 
-.button {
-  margin-left: 45%;
-  margin-right: 45%;
+
+
+  input {
+    width: 500px;
+    height: 50px;
+  }
+
+  .description {
+    height: 100px;
+  }
+
+  h1 {
+    font-size: 3em;
+}
+
+.form {
+  padding-top: 0px;
+}
+
+.submit {
+  font-size: 1.5em;
+  width: 100px;
+  padding: 0px;
 }
 }
 
+
+
+
+ 
 </style>

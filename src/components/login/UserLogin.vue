@@ -5,7 +5,7 @@
         </div>
         <div class="logo">
             
-<img src="https://i.ibb.co/DwzHtf7/ujoin-logo2.png" alt="ujoin-logo2" border="0">
+  <img src="https://i.ibb.co/X8m0qjh/UJOIN-logo.png" alt="UJOIN-logo" border="0">
         </div>
   
 <div class="user-info">
@@ -25,19 +25,12 @@
 <script>
 export default {
     name: "UserLogin",
-//      created: async function() {
-//     const eventId = this.$route.params.eventId
-//     console.log('created', eventId)
-//       this.event = await this.getEvent(eventId)
-//         this.item = await this.createItem(eventId)
-//       console.log(this.event)
-//    },
+
 }
 
 </script>
 
 <style scoped>
-
 
 input {
 border: solid 1px #2B313F;
@@ -60,6 +53,7 @@ padding: 10px 0px 10px 5px;
 .login-user{
 display: flex;
 justify-content: flex-end;
+margin: 10px 20px 0px 0px;
 
 }
 
@@ -156,5 +150,6 @@ input::placeholder {
 
  }
   
+
 
 </style>

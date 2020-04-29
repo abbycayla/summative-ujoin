@@ -22,8 +22,8 @@ export default {
     display: flex;
     justify-content: space-between;
     color: white;
-    background-color: #454c45;
-    padding: 30px 40px;
+    background-color: #2B313F;
+    padding: 30px 20px;
     margin-bottom: 7%;
     /* height: 100px; */
 }

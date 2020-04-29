@@ -59,6 +59,7 @@ li a {
 
 .end-conference a {
     color: white;
+     font-family: 'Open Sans', sans-serif;
 }
 
 .router-link-exact-active {
