@@ -1,20 +1,24 @@
 <template>
- <div class="reply-to-item"> 
-      <HeaderConference/>
+  <div class="reply-to-item"> 
+    <HeaderConference/>
       <div class="reply-heading">
-          <!-- <div class="heading-button">
-        <router-link v-bind:to="'/all-items-user'"> <img class="back" src="@/assets/back-light.png"> </router-link> 
-      </div> -->
-      <div class="heading-title">
-      <h1> Question Asked By: </h1>
-      </div>
+        <div class="heading-button">
+          <router-link v-bind:to="'/all-items-user'"> 
+            <img class="back" src="@/assets/back-light.png"> 
+          </router-link> 
+        </div>
+        <div class="heading-title">
+          <h1> Question Asked By: </h1>
+        </div>
       </div>
       <h2> Username </h2>
       <div class="textarea-wrapper">
-      <p class="users-question"> {{item.body}}</p>
-      <p class="users-reply"> Reply </p>
+        <p class="users-question"> {{item.body}}</p>
+        <p class="users-reply"> Reply </p>
       </div>
-      <button class="submit"> <router-link v-bind:to="'/all-items-admin'"> Submit </router-link> </button>
+      <button class="submit">   
+        <router-link v-bind:to="'/all-items-admin'"> Submit </router-link> 
+      </button>
       <NavBarAdmin/>
   </div>
 </template>
@@ -32,6 +36,7 @@ export default {
       NavBarAdmin,
       HeaderConference
     },
+
     data: function(){
         return {
             item: {}
@@ -45,8 +50,6 @@ export default {
       return axios
         .get(`${config.apiUrl}/users/${userId}/events/${eventId}/items/${itemId}`)
         .then(function (response) {
-//  const item = response.data.item
-            // console.log(item)
           return response.data.item
         })
         .catch(function(error){
@@ -60,7 +63,6 @@ export default {
       this.item = await this.getItem(itemId)
       console.log(this.item)
     }
-
 }
 </script>
 
@@ -76,7 +78,6 @@ export default {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
-    /* margin: 0% 50%; */
 }
 
 .users-question {
@@ -143,22 +144,14 @@ textarea {
     text-decoration: none;
 }
 
-
-/* .back {
+.back {
     margin-top: 8px;
     width: 30px;
-} */
-
-
-
-@media only screen and (min-width: 768px) {
-
- textarea {
-    width: 50%;
 }
 
+@media only screen and (min-width: 768px) {
 h1 {
-     font-size: 3.2em;
+     font-size: 3em;
 }
 
 h2 {
@@ -171,24 +164,14 @@ h2 {
     width: 50px;
 }
 
-ul {
-  bottom: 60px;
-  left: 31%;
-  /* right: 50%; */
-}
-
-li {
-  padding: 1% 2%;
-  margin: 0px 70px;
-}
-
 .users-question {
   width: 400px;
-
+  height: 100px;
 }
 
 .users-reply {
   width: 400px;
+  height: 100px;
 }
 
 }

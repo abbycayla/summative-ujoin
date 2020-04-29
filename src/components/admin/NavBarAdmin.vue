@@ -16,12 +16,9 @@ export default {
     name: "NavBarAdmin",
      data: function(){
       return{
-       event: {
-      
-      },
+       event: {},
       }
-    }, methods: {
-    }
+    }, 
 }
 </script>
 
@@ -54,7 +51,6 @@ li a {
 
 .all-questions {
     border-right: solid 1px grey;
-    /* background-color: white; */
 }
 
 .end-conference {
@@ -72,7 +68,7 @@ li a {
 
 @media only screen and (min-width: 768px){
   ul {
-        justify-content: center;
+    justify-content: center;
     }
 
     li {

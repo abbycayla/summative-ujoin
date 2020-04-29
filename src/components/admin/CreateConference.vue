@@ -80,106 +80,114 @@ export default {
     }
 }
 </script>
-
-
-
+ 
 <style scoped>
+
 .create-conference {
-    height: 100vh;
-    color: #454c45;
-    font-family: 'Open Sans', sans-serif;
+ height: 100vh;
+ color: #454c45;
+ font-family: 'Open Sans', sans-serif;
 }
-
+ 
 .create-conference-heading {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 40px;
+ display: flex;
+ justify-content: center;
 }
-
+ 
 h1 {
-    text-align: center;
-    font-size: 2em;
-    font-weight: 400; 
-    margin: 0px 20px;
+ text-align: center;
+ font-size: 2em;
+ font-weight: 400; 
+ margin: 0px 20px 30px 20px;
 }
-
+ 
 .back {
-    display: block;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 8px;
+ display: block;
+ margin-right: auto;
+ margin-left: auto;
+ margin-top: 8px;
+}
+ 
+.submit {
+ height: 50px;
+ width: 100px;
+ border: none;
+ background-color: #4baced;
+ outline: none;
+ display: block;
+ margin-right: auto;
+ margin-left: auto;
+ margin-top: 20px;
+ color: white;
+ text-decoration: none;
+ font-size: 1.5em;
 }
 
-.submit {
-    height: 50px;
-    width: 100px;
-    border: none;
-    background-color: #4baced;
-    outline: none;
-    display: block;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 20px;
-     color: white;
-    text-decoration: none;
-    font-size: 1.5em;
-}
 .submit a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.5em;
+ color: white;
+ text-decoration: none;
+ font-size: 1.5em;
 }
-
+ 
+.submit:hover {
+cursor: pointer;
+}
+ 
 label {
-  margin: 50px 0px;
+ margin: 50px 0px;
 }
-
+ 
 .error {
-    font-size: .9em;
-    font-weight: lighter;
-    text-align: center;
+ font-size: .9em;
+ font-weight: lighter;
+ text-align: center;
 }
-
+ 
 .form {
-  display: flex;
-  justify-content: center;
+ display: flex;
+ justify-content: center;
 }
-
+ 
 input {
-  margin: 5px 0px 20px 0px;
-  border: 1px solid #2b313f;
-  width: 250px;
-  height: 30px;
-  outline: none;
-  padding-left: 10px;
+ margin: 5px 0px 20px 0px;
+ border: 1px solid #2b313f;
+ width: 250px;
+ height: 30px;
+ outline: none;
+ padding-left: 10px;
 }
-
+ 
 .description {
-  height: 60px;
+ padding-bottom: 90px;
+ padding-top: 20px;
 }
-
+ 
+.description {
+ height: 60px;
+}
+ 
 @media only screen and (min-width: 768px) {
-  input {
-    width: 500px;
-    height: 50px;
-  }
-
-  .description {
-    height: 100px;
-  }
-
-  h1 {
-    font-size: 3em;
+ input {
+ width: 500px;
+ height: 50px;
+ }
+ 
+ .description {
+ height: 100px;
+ }
+ 
+ h1 {
+ font-size: 3em;
 }
-
+ 
 .form {
-  padding-top: 0px;
+ padding-top: 0px;
 }
-
+ 
 .submit {
-  font-size: 1.5em;
-  width: 100px;
-  padding: 0;
+ font-size: 1.5em;
+ width: 100px;
+ padding: 0px;
 }
 }
-
+</style>
