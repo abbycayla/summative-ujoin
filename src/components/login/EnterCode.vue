@@ -5,7 +5,7 @@
 <button> <router-link v-bind:to="'/'"> <i class='fas fa-angle-left'></i> </router-link> </button>
       </div>
 <div>
-<img src="https://i.ibb.co/DwzHtf7/ujoin-logo2.png" alt="ujoin-logo2" border="0"> 
+<img src="https://i.ibb.co/DwzHtf7/ujoin-logo2.png" alt="ujoin-logo2" border="0">
 </div>
 
     </div>
@@ -244,5 +244,5 @@ input::placeholder {
 
  }
   
-
+</style>
 

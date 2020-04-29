@@ -1,4 +1,11 @@
 <template>
+
+  <div> 
+      <h1> Edit Conference </h1>
+      
+ <button> <router-link v-bind:to="'/conference-details/:eventId'"> Back </router-link> </button>
+   <a href="#" @click.prevent="deleteEvent()"> Delete </a>
+   
   <div class="body">
     <h1>Edit Details</h1>
     <div v-if="errors.length">
@@ -30,13 +37,15 @@ export default {
     name: "EditConference",
     data: function() {
     return {
-      event: {
+      events: [],
+       event: {
         title: '',
         body: ''
       },
       errors: []
     };
   },
+
   methods:{
      checkForm: function(evt) {
       evt.preventDefault();
@@ -53,6 +62,17 @@ export default {
         this.updateEvent()
       }
     },
+    deleteEvent: function(){
+  let userId = localStorage.getItem('userId')
+ let eventId = localStorage.getItem('eventId')
+ debugger
+      return axios
+        .delete(`${config.apiUrl}/users/${userId}/events/${eventId}`)
+       .then((response) => {
+         debugger
+     this.$router.push({ path: "/create-conference"});
+     }
+     },
     updateEvent: function() {
       let eventId = localStorage.getItem('eventId')
       let userId = localStorage.getItem('userId')
@@ -65,6 +85,8 @@ export default {
           // handle error
           console.log(error);
         });
+    }
+  }
     },
     getEvent: function(eventId) {
       let userId = localStorage.getItem('userId')
@@ -88,6 +110,7 @@ export default {
       console.log(this.event)
    },
   
+
 }
 
 </script>
