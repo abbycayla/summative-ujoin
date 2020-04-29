@@ -29,7 +29,8 @@ export default {
     },
     data: function(){
         return {
-            items: []
+            items: [],
+            item: {}
         }
         
     },

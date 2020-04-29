@@ -51,6 +51,7 @@ const routes = [
     // props: true,
     path: '/all-items-user',
     component: AllItemsUser,
+    name: 'allItemsUser'
   },
   {
     // name: "newQuestion",
@@ -74,7 +75,9 @@ const routes = [
     component: EditItem,
   },
   {
-    path: '/all-items-admin',
+    name: 'AllItemsAdmin',
+    props: true,
+    path: '/all-items-admin/:eventId',
     component: AllItemsAdmin,
   },
   {
