@@ -1,29 +1,39 @@
 <template>
   <div> 
-      <button> <router-link v-bind:to="'/'"> Back </router-link> </button>
-      <h1> Log in as Admin </h1>
-      <form @submit="checkForm">
- <div class="admin-info">
- <h1> Log in </h1>
- <label for="firstName">Email</label>
+    <div class="login-admin">
+      <div>
+<button> <router-link v-bind:to="'/'"> <i class='fas fa-angle-left'></i>  </router-link> </button>
+      </div>
+
+<div>
+<img src="https://i.ibb.co/DwzHtf7/ujoin-logo2.png" alt="ujoin-logo2" border="0"> 
+</div>
+    </div>
+  <form @submit="checkForm">
+  <div class="admin-info">
+     <h1> Log in  </h1>
+ <label  for="firstName">Enter email</label>
  <input v-model="user.email" type="text" placeholder="Email" />
- <input class="join" type="submit" value="Login" />
+  <input class="join" type="submit" value="Login" />
+       
+  </div>
+  <div>
+     <label class="ohnohoney" for="name"> Name</label>
+        <input class="ohnohoney" v-model="ohNoHoneyName" id="name" name="name" type="text" />
+  </div>
+
+
+
+
  
- </div>
- <div>
- <label class="ohnohoney" for="name"> Name</label>
- <input class="ohnohoney" v-model="ohNoHoneyName" id="name" name="name" type="text" />
- </div>
-
-
 </form>
 <div v-if="errors.length">
 <p>Please correct the errors</p>
 <ul>
- <li v-for="error in errors" :key="error">{{ error }}</li>
+  <li v-for="error in errors" :key="error">{{ error }}</li>
 </ul>
 </div>
-
+     
   </div>
 </template>
 
@@ -33,56 +43,54 @@ import * as config from "../../../config";
 export default {
 name: "Login",
  data: function() {
- return {
- user: {
- email: ''
- },
- ohNoHoneyName: '',
- errors: []
- };
- },
+    return {
+      user: {
+        email: ''
+        },
+      ohNoHoneyName: '',
+      errors: []
+    };
+  },
  methods: {
- checkForm: function(evt) {
- evt.preventDefault();
- 
- this.errors = [];
- 
- if (this.user.ohNoHoneyName) {
- this.errors.push("Ha ha got you");
- }
- if (!this.user.email) {
- this.errors.push("Email required");
- }
- 
- if (!this.errors.length) {
- this.loginUser();
- }
- },
- loginUser: function() {
- console.log('Ok!')
- 
- return axios
- .post(`${config.apiUrl}/users/admin-login`, this.user)
- .then((response) => {
- let user = response.data.user
- if (user){
- localStorage.userEmail = user.email
- localStorage.userId = user.id
+  checkForm: function(evt) {
+      evt.preventDefault();
 
- } else {
- //show message?
- }
- 
- // console.log('user', response.data.user)
- this.$router.push({ path: "/create-conference" });
- })
- .catch(function(error) {
- // handle error
- console.log(error);
- });
- },
- }
- 
+      this.errors = [];
+
+      if (this.user.ohNoHoneyName) {
+        this.errors.push("Ha ha got you");
+      }
+      if (!this.user.email) {
+        this.errors.push("Email required");
+      }
+    
+      if (!this.errors.length) {
+        this.loginUser();
+      }
+    },
+    loginUser: function() {
+        console.log('Ok!')
+   
+      return axios
+        .post(`${config.apiUrl}/users/admin-login`, this.user)
+        .then((response) => {
+            let user = response.data.user
+            if (user){
+            localStorage.userEmail = user.email
+            localStorage.userId = user.id
+            } else {
+                
+            }
+
+           
+          this.$router.push({ path: "/create-conference" });
+        })
+        .catch(function(error) {
+          
+          console.log(error);
+        });
+    },
+    }
  }
 </script>
 
@@ -100,16 +108,20 @@ name: "Login",
 
 
 .login-admin i {
-  font-size: 30px;
+   font-size: 40px;
   color: #f2f2f2;
    margin: 20px 0px 0px 10px;
 }
 
 .login-admin img {
 width: 50%;
-padding-left: 60px;
+margin-left: 70px;
 margin-top: 10px;
 }
+
+
+
+
 
 .login-admin {
   display: flex;
@@ -133,6 +145,7 @@ input {
 border: solid 1px #2B313F;
 outline: none;
 padding: 10px 0px 10px 5px;
+
 }
 
 label {
@@ -140,10 +153,11 @@ font-family: 'Open Sans', sans-serif;
     font-size: 15px;
     color: #2B313F;
     margin-bottom: 10px;
+    margin-top: 60px;
 }
 
 .join {
-       margin: 50px 60px 0px 60px;
+       margin: 100px 60px 0px 60px;
        padding: 5px 7px 5px 7px;
        background-color: #4BACED;
        border: none;
@@ -181,7 +195,7 @@ font-family: 'Open Sans', sans-serif;
 
    .join {
         padding: 10px 0px 10px 0px;
-       margin: 50px 250px 0px 250px;
+       margin: 150px 250px 0px 250px;
        
    }
 
@@ -194,6 +208,7 @@ font-family: 'Open Sans', sans-serif;
 
 input {
 padding: 20px 0px 20px 10px;
+font-size: 20px;
 }
 
 
@@ -204,9 +219,10 @@ label {
 
 
 .login-admin img {
-width: 15%;
-padding-left: 550px;
+width: 60%;
+padding-left: 490px;
 margin-top: 10px;
+margin-left: 0%;
 }
 
 .login-admin button {
@@ -218,9 +234,9 @@ background-color: #2B313F;
 
 
 .login-admin i {
-  font-size: 40px;
+  font-size: 60px;
   color: #f2f2f2;
-   margin: 30px 0px 0px 20px;
+   margin: 40px 0px 0px 20px;
 }
 
 input::placeholder {

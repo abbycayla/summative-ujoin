@@ -104,7 +104,7 @@ li a {
 }
 
 .edit{
-    background-color: #454c45;
+    background-color: #28313f;
 }
 
 .host a, .edit a {
