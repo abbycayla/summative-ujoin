@@ -68,15 +68,14 @@ const routes = [
   {
     path: '/create-item',
     component: CreateItem,
+    
   },
   {
     path: '/edit-item',
     component: EditItem,
   },
   {
-    name: 'AllItemsAdmin',
-    props: true,
-    path: '/all-items-admin/:eventId',
+    path: '/all-items-admin',
     component: AllItemsAdmin,
   },
   {
@@ -96,7 +95,9 @@ const routes = [
     component: EditConference,
   },
   {
-    path: '/reply-to-item',
+    name: 'replyToItem',
+    props: true,
+    path: '/reply-to-item/:itemId',
     component: ReplyToItem,
   }
 ]
