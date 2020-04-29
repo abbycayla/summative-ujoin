@@ -17,10 +17,50 @@ export default {
 
 <style scoped>
 
-h1 {
+ul {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  background-color: white;
+}
+
+li {
+    padding: 2% 5%;
     text-align: center;
+    border: none;
+    outline: none;
+    list-style-type: none;
+}
+
+li a {
+    font-size: 1.15em;
+    text-decoration: none;
+    color: #28313f;
     font-weight: lighter;
 }
 
+.ask-question {
+    border-left: solid 1px grey;
+    border-right: solid 1px grey;
+}
+
+.router-link-exact-active {
+  font-weight: bold;
+  color: #54a9de;
+}
+
+
+@media only screen and (min-width: 768px){
+    ul {
+        justify-content: center;
+    }
+
+    li {
+        padding: 1% 12%;
+        font-size: 1.3em;
+        text-align: center;
+    }
+}
 
 </style>

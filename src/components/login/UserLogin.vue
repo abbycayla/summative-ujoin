@@ -5,7 +5,7 @@
         </div>
         <div class="logo">
             
-  <img src="https://i.ibb.co/X8m0qjh/UJOIN-logo.png" alt="UJOIN-logo" border="0">
+<img src="https://i.ibb.co/DwzHtf7/ujoin-logo2.png" alt="ujoin-logo2" border="0">
         </div>
   
 <div class="user-info">
@@ -37,6 +37,7 @@ export default {
 </script>
 
 <style scoped>
+
 
 input {
 border: solid 1px #2B313F;
@@ -155,6 +156,5 @@ input::placeholder {
 
  }
   
-
 
 </style>

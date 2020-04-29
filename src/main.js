@@ -8,13 +8,12 @@ import EnterCode from './components/login/EnterCode.vue';
 import AdminLogin from './components/login/AdminLogin.vue';
 import UserLogin from './components/login/UserLogin.vue';
 
-
-
 //USER
 import AllItemsUser from './components/user/AllItemsUser.vue';
 import MyItems from './components/user/MyItems.vue';
 import CreateItem from './components/user/CreateItem.vue';
 import EditItem from './components/user/EditItem.vue';
+import ItemDetail from './components/user/ItemDetail.vue';
 
 //ADMIN
 import AllItemsAdmin from './components/admin/AllItemsAdmin.vue';
@@ -30,7 +29,7 @@ import ReplyToItem from './components/admin/ReplyToItem.vue';
 Vue.config.productionTip = false
 Vue.use(VueRouter);
 Vue.use(VueResource);
-
+// Vue.use(Router)
 
 const routes = [
   {
@@ -40,26 +39,30 @@ const routes = [
   {
     path: '/enter-code',
     component: EnterCode,
-  },
-  {
-    path: '/enter-code',
-    component: EnterCode,
+    // props: true,
+    name: "enter code"
   },
   {
     path: '/admin-login',
     component: AdminLogin,
   },
   {
+    // name: "allitems",
+    // props: true,
     path: '/all-items-user',
     component: AllItemsUser,
   },
   {
-    path: '/my-items/:itemId',
-    name: "newQuestion",
+    // name: "newQuestion",
+    path: '/my-items',
     component: MyItems,
-    props: true
-    
-    
+    props: true,
+  }, 
+  {
+    name: "itemDetail",
+    path: '/item-detail/:itemId',
+    component: ItemDetail,
+    props: true,
   },
   {
     path: '/create-item',
@@ -77,12 +80,14 @@ const routes = [
   {
     path: '/create-conference',
     component: CreateConference,
+    // params: true
   },
   {
     path: '/conference-details/:eventId',
-    name: "details",
+    name: 'details',
     component: ConferenceDetails,
     props: true
+
   },
   {
     path: '/edit-conference',
