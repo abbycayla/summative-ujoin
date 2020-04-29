@@ -1,24 +1,95 @@
 <template>
-  <div class= "body"> 
-      <h1> Edit Conference </h1>
-      <p>Name:</p>
-      <div></div>
-      <p>Details:</p>
-      <div></div>
-      <p>User entrance code:</p>
-  <div class="button">
-    <p>Submit</p>
-  </div>
-      <button> <router-link v-bind:to="'/conference-details'"> Back </router-link> </button>
-      <button> <router-link v-bind:to="'/create-conference'"> Delete </router-link> </button>
+  <div class="body">
+    <h1>Edit Details</h1>
+    <div v-if="errors.length">
+      Please correct the following error(s):
+      <ul>
+        <li v-for="error in errors" :key="error">{{ error }}</li>
+      </ul>
+    </div>
+    <form @submit="checkForm">
+      <div class="box-one">
+        <label for="title">Title</label>
+        <input v-model="event.title" type="text" placeholder="Title" />
+      </div>
+      <div>
+        <label for="body">Body</label>
+        <textarea v-model="event.body" name="body" cols="30" rows="10"></textarea>
+      </div>
+      <div>
+        <input type="submit" value="Submit" />
+      </div>
+    </form>
   </div>
 </template>
 
 <script>
-// 5ea0f9456ed62542b0f7dde7 hard coded event id
+import axios from "axios";
+import * as config from "../../../config";
 export default {
     name: "EditConference",
+    data: function() {
+    return {
+      event: {
+        title: '',
+        body: ''
+      },
+      errors: []
+    };
+  },
+  methods:{
+     checkForm: function(evt) {
+      evt.preventDefault();
+
+      this.errors = [];
+
+      if (!this.event.title) {
+        this.errors.push("Title required");
+      }
+      if (!this.event.body) {
+        this.errors.push("Body required");
+      }
+      if (!this.errors.length) {
+        this.updateEvent()
+      }
+    },
+    updateEvent: function() {
+      let eventId = localStorage.getItem('eventId')
+      let userId = localStorage.getItem('userId')
+      return axios
+        .put(`${config.apiUrl}/users/${userId}/events/${eventId}`, this.event)
+        .then(() => {
+          this.$router.push({ name: "details", params: {eventId: event.id} });
+        })
+        .catch(function(error) {
+          // handle error
+          console.log(error);
+        });
+    },
+    getEvent: function(eventId) {
+      let userId = localStorage.getItem('userId')
+    // const eventId = this.$route.params.eventId
+      return axios
+        .get(`${config.apiUrl}/users/${userId}/events/${eventId}`)
+        .then(function (response) {
+          return response.data.event;
+          // console.log(event)
+        })
+        .catch(function(error){
+          console.log(error)
+        })
+    
+    
+  }
+  }, created: async function() {
+    const eventId = this.$route.params.eventId
+    console.log('created', eventId)
+      this.event = await this.getEvent(eventId)
+      console.log(this.event)
+   },
+  
 }
+
 </script>
 
 <style scoped>
@@ -33,7 +104,7 @@ h1 {
   text-align: center;
 }
 
-p {
+label {
   font-size: 1em;
   color: #f2f2f2;
   padding-bottom: 5%;
@@ -48,6 +119,10 @@ p {
   margin-right: 40%;
   padding-top: 5px;
   padding-bottom: 5px;
+}
+
+.box-one {
+  padding-bottom: 10%;
 }
 
 @media only screen and (min-width: 768px) {

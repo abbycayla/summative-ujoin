@@ -1,6 +1,6 @@
 <template>
   <div class="create-conference"> 
-    <!-- <HeaderAdmin/> -->
+    <HeaderAdmin/>
     <div class="create-conference-heading">
       <div>
       <h1> Create a Conference </h1>
@@ -31,13 +31,12 @@
 <script>
 import axios from "axios";
 import * as config from "../../../config";
- 
-// import HeaderAdmin from "./HeaderAdmin.vue"
+import HeaderAdmin from "./HeaderAdmin.vue"
 export default {
     name: "CreateConference",
-    // components: {
-    //   HeaderAdmin
-    // },
+    components: {
+      HeaderAdmin
+    },
     data: function(){
       return{
       event: {
@@ -51,9 +50,7 @@ export default {
     methods: {
     checkForm: function(evt) {
       evt.preventDefault();
- 
       this.errors = [];
- 
       if (!this.event.title) {
         this.errors.push("Title required");
       }
@@ -65,46 +62,140 @@ export default {
       }
       if (!this.errors.length) {
         this.createEvent();
+        // this.getEvent()
       }
     },
     createEvent: function() {
       let userId = localStorage.getItem('userId')
       return axios
         .post(`${config.apiUrl}/users/${userId}/events`, this.event)
-      .then(() => {
+      .then((response) => {
+        const event = response.data.event
+        console.log(event)
+        if (event){
+          localStorage.eventId = event.id
+        }
       // this.getEventDetails(eventId)
-    this.$router.push({ path: "/conference-details" });
+    this.$router.push({ name: "details", params: {eventId: event.id} });
+    console.log(this.$route.params)
  })
         .catch(function(error) {
           // handle error
           console.log(error);
         });
     }, 
-// , 
-// created: async function(){
-//       const eventId = this.$route.params.eventId
-//       if (eventId){
-//         this.event = await this.createEvent(eventId)
-//       }
- 
-// }
- 
-// getEvent: function(eventId) {
-//       let userId = localStorage.getItem('userId')
-//       return axios
-//         .get(`${config.apiUrl}/users/${userId}/events/${eventId}`)
-//         .then(function(response) {
-//           this.event = response.data.event;
-//         })
-//     }
-//   , created: async function() {
-//     console.log('created')
-//     const eventId = this.$route.params.eventId
-//     if (eventId) {
-//       this.event = await this.getEvent(eventId)
-//     }
-//    }
+  //   getEvent: function(eventId) {
+  //     let userId = localStorage.getItem('userId')
+  //     return axios
+  //       .get(`${config.apiUrl}/users/${userId}/events/${eventId}`)
+  //       .then(function (response) {
+  //       return response.data.event
+  //       })
+  //   }
+  // , created: async function() {
+  //   const eventId = this.$route.params.eventId
+  //   if(eventId){
+  //     this.event = await this.getEvent(eventId)
+  //   }
+  //  }
 }
 }
- 
 </script>
+
+
+
+<style scoped>
+.create-conference {
+    /* background-color: #454c45; */
+    height: 100vh;
+    color: #454c45;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.create-conference-heading {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+    /* margin: 0% 50%; */
+}
+
+h1 {
+    text-align: center;
+    font-size: 2em;
+    font-weight: 400; 
+    margin: 0px 20px;
+}
+
+.back {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 8px;
+}
+
+
+.submit {
+    padding: 5px 7px;
+    border: none;
+    background-color: #4baced;
+    outline: none;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 20px;
+}
+
+.submit a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5em;
+}
+
+label {
+  margin: 50px 0px;
+}
+
+
+.form {
+  display: flex;
+  justify-content: center;
+  /* font-weight: 400; */
+  /* padding-top: 0px; */
+}
+
+input {
+  margin: 5px 0px 20px 0px;
+  border: 1px solid #2b313f;
+  padding: 10px 30px;
+}
+
+.description {
+  padding: 40px 30px;
+}
+
+@media only screen and (min-width: 768px) {
+  input {
+    padding: 15px 200px;
+    margin: 10px 0px 20px 0px;
+  }
+
+  .description {
+    padding: 40px 200px;
+  }
+
+  h1 {
+    font-size: 3em;
+}
+
+.form {
+  padding-top: 0px;
+}
+
+.submit {
+  font-size: 1.5em;
+  /* padding: 10px 5px; */
+}
+}
+
+
+</style>
