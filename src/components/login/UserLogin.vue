@@ -3,6 +3,10 @@
         <div class="login-user">
  <button> <router-link v-bind:to="'/admin-login'"> Log in as Admin </router-link> </button>
         </div>
+        <div class="logo">
+            
+<img src="https://i.ibb.co/DwzHtf7/ujoin-logo2.png" alt="ujoin-logo2" border="0">
+        </div>
   
 <div class="user-info">
      <p>Please enter your name</p>
@@ -21,7 +25,15 @@
 <script>
 export default {
     name: "UserLogin",
+//      created: async function() {
+//     const eventId = this.$route.params.eventId
+//     console.log('created', eventId)
+//       this.event = await this.getEvent(eventId)
+//         this.item = await this.createItem(eventId)
+//       console.log(this.event)
+//    },
 }
+
 </script>
 
 <style scoped>
