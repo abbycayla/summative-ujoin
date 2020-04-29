@@ -26,14 +26,14 @@ export default {
 deleteItem: function(){
   let userId = localStorage.getItem('userId')
  let eventId = localStorage.getItem('eventId')
- debugger
+ 
       return axios
         .delete(`${config.apiUrl}/users/${userId}/items/${itemId}`)
       .then(async () => {
           this.items = await this.getItems();
         })
         .catch(function(error) {
-          // handle error
+         
           console.log(error);
         });
     }

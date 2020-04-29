@@ -99,7 +99,7 @@ export default {
 
 .body {
     Height: 100vh;
-    background-color: #454C59; 
+    background-color: #2b313f; 
 }
 
 h2 {

@@ -2,9 +2,7 @@
  <div class="reply-to-item"> 
       <HeaderConference/>
       <div class="reply-heading">
-          <!-- <div class="heading-button">
-        <router-link v-bind:to="'/all-items-user'"> <img class="back" src="@/assets/back-light.png"> </router-link> 
-      </div> -->
+        
       <div class="heading-title">
       <h1> Question Asked By: </h1>
       </div>
@@ -45,8 +43,7 @@ export default {
       return axios
         .get(`${config.apiUrl}/users/${userId}/events/${eventId}/items/${itemId}`)
         .then(function (response) {
-//  const item = response.data.item
-            // console.log(item)
+
           return response.data.item
         })
         .catch(function(error){
@@ -76,7 +73,7 @@ export default {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
-    /* margin: 0% 50%; */
+    
 }
 
 .users-question {
@@ -144,10 +141,7 @@ textarea {
 }
 
 
-/* .back {
-    margin-top: 8px;
-    width: 30px;
-} */
+
 
 
 
@@ -174,7 +168,7 @@ h2 {
 ul {
   bottom: 60px;
   left: 31%;
-  /* right: 50%; */
+
 }
 
 li {

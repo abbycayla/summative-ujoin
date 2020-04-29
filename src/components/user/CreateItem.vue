@@ -3,8 +3,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <HeaderConference/>
     <div class="create-item-heading">
-        <div class="heading-button">
-            <router-link v-bind:to="'/all-items-user'"> <img src="@/assets/back-light.png" alt="back-light" class="back"> </router-link>
+        <div class="item-button">
+            
+            <button> <router-link v-bind:to="'/all-items-user'"> <i class='fas fa-angle-left'></i> </router-link> </button>
         </div>
         <div class="heading-title">
             <h1> Ask a Question </h1>
@@ -78,12 +79,12 @@ export default {
  .then((response) => {
  const item = response.data.item
  console.log(item)
- // this.getEventDetails(eventId)
+
  this.$router.push({ path: "/my-items"});
  console.log(this.$route.params)
  })
  .catch(function(error) {
- // handle error
+
  console.log(error);
  });
  }, 
@@ -94,9 +95,19 @@ export default {
 
  
 <style scoped>
+
+
+
+.create-item-heading i {
+  font-size: 40px;
+  color: #f2f2f2;
+  
+}
+
+
  
 .create-item {
-    background-color: #454c45;
+    background-color: #2B313F;
     height: 100vh;
     color: white;
     font-family: 'Open Sans', sans-serif;
@@ -106,14 +117,17 @@ export default {
     display: flex;
     justify-content: center;
     margin-bottom: 40px;
+    background-color: #2B313F;
     
 }
 
-input {
+input[type=text]{
     height: 150px;
     width: 250px;
     border: none;
     outline: none;
+    padding-left: 10px;
+    padding-bottom: 100px;
 }
  
 h1 {
@@ -121,6 +135,7 @@ h1 {
     font-size: 2em;
     font-weight: lighter; 
     margin: 0px 20px;
+    margin-top: 10px;
 }
  
 button {
@@ -128,7 +143,7 @@ button {
     margin-right: auto;
     margin-left: auto;
     margin-top: 13px;
-    /* width: 20px; */
+   
 }
  
 .body-textarea {

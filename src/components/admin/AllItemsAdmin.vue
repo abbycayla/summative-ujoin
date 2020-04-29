@@ -1,27 +1,11 @@
 <template>
   <div class="body">
     <HeaderConference/> 
-      <h1> Questions </h1>
-      <!-- <div class="item-box"> 
-        <div class="item-content">
-          <h3> name </h3>
-        <div>
-          <router-link :to="{
-              name: 'itemDetail',
-              params: {itemId: item.id}
-              }"> 
-              <h1> {{item.body}} </h1>
-          </router-link> 
-          </div>
-           </div>
-          <div class="item-options">
-          <p class="reply">Replied</p>
-          <p>Delete</p>
-          </div>
+    <div class="adminQuestions">
+ <h1> Questions </h1>
+    </div>
      
-       </div> -->
-
-<div  v-for="item in items" :key="item.id" :item="item">
+   <div  v-for="item in items" :key="item.id" :item="item">
        <div class="item-box">
           <div class="item-content">
         <h1>name</h1>
@@ -37,50 +21,14 @@
           <p>Delete</p>
           </div> 
           </div>
-      <!-- </div>
-      
-      </div> -->
+    
       </div>
+         <ul class="buttons-nav">
+      <li class="edit"> <router-link v-bind:to="'/edit-conference'"> Edit <br/> Conference </router-link> </li>
+         <li class="host"><router-link v-bind:to="{path: '/all-items-admin'}"> HOST</router-link></li>
+      </ul>
        </div>
-       <!-- <div v-for="item in items" :key="item.id" :item="item">
-          <router-link :to="{
-              name: 'itemDetail',
-              params: {itemId: item.id}
-              }"> 
-              <h1> {{item.body}} </h1>
-          </router-link>
-      </div> -->
-      <!-- <div class="item-options">
-          <p class="reply">Replied</p>
-          <p>Delete</p>
-          </div>
-      </div>
-      <div class="item-box">
-          <div class="item-content">
-        <h3>name</h3>
-      <h2> <router-link v-bind:to="'/reply-to-item'"> Question jdnijksnvkd </router-link> </h2>
-      </div>
-      <div class="item-options">
-          <p class="reply">Replied</p>
-          <p>Delete</p>
-          </div>
-      </div>-->
-      
-
-       <!-- <h1> My Questions </h1>
-      <button> <router-link v-bind:to="'/all-items-user'"> Back </router-link> </button>
-      <button> <router-link v-bind:to="'/edit-item'"> Edit </router-link> </button>
-      <div v-for="item in items" :key="item.id" :item="item">
-          <router-link :to="{
-              name: 'itemDetail',
-              params: {itemId: item.id}
-              }"> 
-              <h1> {{item.body}} </h1>
-          </router-link>
-      </div> -->
-      
-      <!-- <NavBarAdmin/>
-  </div> -->
+       
 </template>
 
 <script>
@@ -126,10 +74,46 @@ export default {
 </script>
 
 <style scoped>
+ul {
+  
+  width: 100%;
+  display: flex;
+  background-color: white;
+}
+li {
+    padding: 5% 10px;
+    text-align: center;
+    outline: none;
+    list-style-type: none;
+    width: 220px;
+}
+li a {
+    font-size: 1.2em;
+    text-decoration: none;
+    color: #28313f;
+}
+.host{
+    background-color: #4baced;
+    
+}
+.edit{
+    background-color: white;
+}
+.host a, .edit a {
+  color: #28313f;
+}
+.host {
+  padding-top: 30px;
+}
+
+.adminQuestions h1{ 
+  color: white;
+}
 
 .body {
-    background-color: #454C59;
-    /* height: 100vh; */
+    background-color: #28313f;
+
+    
 }
 
 .item-box {
@@ -137,9 +121,10 @@ export default {
   justify-content: space-between;
   background-color: #f2f2f2;
   border: #f2f2f2 1px solid;
-  margin-left: 10%;
-  margin-right: 10%;
-  margin-bottom: 10%;
+  margin-left: 40px;
+  margin-right: 40px;
+ margin-top: 40px;
+ margin-bottom: 30px;
   }
 
 .item-options {
@@ -159,16 +144,16 @@ export default {
 
 h1 {
     font-family: 'Open Sans', sans-serif;
-    margin-bottom: 10%;
+    margin-bottom: 8px;
     text-align: center;
     color: #454C59;
-    font-size: 1.8em;
+    font-size: 30px;
 }
 
 h3 {
       color: #454C59;
   font-family: 'Open Sans', sans-serif;
-  font-size: 1.3em;
+  font-size: 15px;
 }
 
 a {
