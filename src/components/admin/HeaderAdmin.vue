@@ -2,7 +2,7 @@
   <div class="header"> 
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
         <img src="@/assets/ujoin-logo-light.png" alt="ujoin-logo-light">
-      <h1> Logout </h1> 
+      <h1> <router-link v-bind:to="'/login-admin'"> Logout </router-link></h1> 
   </div>
 </template>
 
@@ -25,9 +25,12 @@ export default {
     margin-bottom: 7%;
 }
 
-h1 {
-    font-size: 1.3em;
-    font-weight: lighter;
+h1 a{
+    font-size: .7em;
+    font-weight: 200;
+    color: white;
+    text-decoration: none;
+
 }
 
 .header img {
@@ -45,9 +48,9 @@ h1 {
 .header img {
     width: 140px;
 }
-
-h1 {
+h1 a{
     padding-top: 10px;
+
 }
 }
 

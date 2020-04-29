@@ -1,11 +1,9 @@
 <template>
   <div> 
+      <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
       <ul>
           <li class="all-questions"> <router-link v-bind:to="'/all-items-admin'"> All <br /> Questions </router-link> </li>
-          <li class="end-conference">  <router-link :to="{
-              name: 'details',
-              params: {eventId: event.id}
-              }">  End  <br /> Conference  </router-link> </li>
+          <li class="end-conference">  <router-link :to="'/conference-details/:eventId'">  End  <br /> Conference  </router-link> </li>
       </ul>
   </div>
 </template>
@@ -23,25 +21,7 @@ export default {
       },
       }
     }, methods: {
-    getEvent: function(eventId) {
-      let userId = localStorage.getItem('userId')
-      return axios
-        .get(`${config.apiUrl}/users/${userId}/events/${eventId}`)
-        .then(function (response) {
-          return response.data.event;
-        })
-        .catch(function(error){
-          console.log(error)
-        })
     }
-    
-  }
-   , created: async function() {
-    const eventId = this.$route.params.eventId
-    console.log('created', eventId)
-      this.event = await this.getEvent(eventId)
-      console.log(this.event)
-   },
 }
 </script>
 
@@ -69,6 +49,7 @@ li a {
     text-decoration: none;
     color: #28313f;
     font-weight: lighter;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .all-questions {

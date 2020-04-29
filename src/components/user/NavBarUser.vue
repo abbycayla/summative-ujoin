@@ -1,5 +1,6 @@
 <template>
   <div> 
+            <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
       <ul>
           <li class="my-questions"> <router-link v-bind:to="'/my-items'"> My Questions </router-link> </li>
           <li class="ask-question"> <router-link v-bind:to="'/create-item'"> Ask Question </router-link> </li> 
@@ -38,6 +39,7 @@ li a {
     text-decoration: none;
     color: #28313f;
     font-weight: lighter;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .ask-question {
