@@ -52,46 +52,7 @@ export default {
         NavBarUser,
         HeaderConference
     },
-    data: function(){
-        return {
-            items: [],
-            item: {},
-            event: {}
-        }
-        
-    },
-      methods: {
-     getMyItems: function() {
-        let userId = localStorage.getItem('userId')
-        let eventId = localStorage.getItem('eventId')
-      return axios
-        .get(`${config.apiUrl}/users/${userId}/events/${eventId}/items`)
-        .then(function (response) {
-          return response.data.items;
-        })
-        .catch(function(error){
-          console.log(error)
-        })
-    } ,
-
-     getEvent: function(eventId) {
-      let userId = localStorage.getItem('userId')
-      return axios
-        .get(`${config.apiUrl}/users/${userId}/events/${eventId}`)
-        .then(function (response) {
-          return response.data.event;
-        })
-        .catch(function(error){
-          console.log(error)
-        })
-    }
-      }, created: async function() {
-    const eventId = this.$route.params.eventId
-    console.log('created', eventId)
-      this.event = await this.getEvent(eventId)
-      this.items = await this.getMyItems()
-      console.log(this.event)
-   },
+   
 }
 </script>
 

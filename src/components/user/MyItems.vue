@@ -1,20 +1,20 @@
 <template>
   <div class="body">
     <HeaderConference/> 
-    <h1> Questions </h1>
+    <h1> My Questions </h1>
     <div v-for="item in items" :key="item.id" :item="item">
        <div class="item-box">
           <div class="item-content">
             <h2>name</h2>
             <h2>  
-              <router-link :to="{name: 'itemDetail',params: {itemId: item.id}}"> 
+              <router-link :to="{name: 'itemDetailUser',params: {itemId: item.id}}"> 
                 <h3> {{item.body}} </h3>
               </router-link>  
             </h2>
           </div>
           <div class="item-options">
             <p class="reply">Replied</p>
-            <p>Delete</p>
+            <p>Edit</p>
           </div> 
         </div>
     </div>

@@ -10,7 +10,7 @@
           <div class="item-content">
         <h1>name</h1>
       <h2>  <router-link :to="{
-              name: 'itemDetail',
+              name: 'itemDetailAdmin',
               params: {itemId: item.id}
               }"> 
               <h3> {{item.body}} </h3>
@@ -23,10 +23,7 @@
           </div>
     
       </div>
-         <ul class="buttons-nav">
-      <li class="edit"> <router-link v-bind:to="'/edit-conference'"> Edit <br/> Conference </router-link> </li>
-         <li class="host"><router-link v-bind:to="{path: '/all-items-admin'}"> HOST</router-link></li>
-      </ul>
+      <NavBarAdmin/>
        </div>
        
 </template>

@@ -75,6 +75,8 @@ h1 {
     font-size: 2em;
     font-weight: 400; 
     margin: 0px 20px;
+    color: #454c45;
+
 }
 
 ul {
@@ -127,7 +129,8 @@ li a {
 
 h2 {
   font-size: 1.2em;
-  padding-bottom: 10px;
+  padding-bottom: 0px;
+  text-align: left;
 }
 
 p {
@@ -156,6 +159,12 @@ p {
 
 h2 {
     font-size: 1.5em;
+    text-align: left;
+}
+
+
+h1 {
+    padding-bottom: 10px;
 }
 
 .form {

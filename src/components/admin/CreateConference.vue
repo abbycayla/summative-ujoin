@@ -101,6 +101,7 @@ h1 {
     font-size: 2em;
     font-weight: 400; 
     margin: 30px 20px 30px 20px;
+    color: #454c45;
 }
  
 .back {

@@ -3,7 +3,7 @@
     <HeaderConference/>
       <div class="reply-heading">
         <div class="heading-button">
-          <router-link v-bind:to="'/all-items-user'"> 
+          <router-link v-bind:to="'/all-items-admin'"> 
             <img class="back" src="@/assets/back-light.png"> 
           </router-link> 
         </div>
@@ -27,8 +27,8 @@
 import axios from "axios";
 import * as config from "../../../config";
 
-import HeaderConference from "./HeaderConference"
-import NavBarAdmin from "../admin/NavBarAdmin"
+import HeaderConference from "../user/HeaderConference"
+import NavBarAdmin from "./NavBarAdmin"
 
 export default {
     name: "ItemDetail",

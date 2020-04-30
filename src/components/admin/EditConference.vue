@@ -61,6 +61,7 @@ deleteEvent: function(){
       return axios
         .delete(`${config.apiUrl}/users/${userId}/events/${eventId}`)
        .then((response) => {
+         console.log('deleted')
        
      this.$router.push({ path: "/create-conference"});
         })

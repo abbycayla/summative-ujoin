@@ -162,8 +162,7 @@ p {
  
 .submit {
  height: 50px;
- width: 100px;
- height: 50px;
+ width: 120px;
  border: none;
  background-color: #4baced;
  outline: none;
@@ -174,6 +173,7 @@ p {
  color: white;
  text-decoration: none;
  font-size: 1.5em;
+ padding: 0;
 }
 
 .back {
