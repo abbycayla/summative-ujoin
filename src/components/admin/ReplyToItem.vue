@@ -2,9 +2,6 @@
   <div class="reply-to-item"> 
       <HeaderConference/>
       <div class="reply-heading">
-          <!-- <div class="heading-button">
-        <router-link v-bind:to="'/all-items-user'"> <img class="back" src="@/assets/back-light.png"> </router-link> 
-      </div> -->
       <div class="heading-title">
       <h1> Question Asked By: </h1>
       </div>

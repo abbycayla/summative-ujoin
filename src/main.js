@@ -39,7 +39,6 @@ const routes = [
   {
     path: '/enter-code',
     component: EnterCode,
-    // props: true,
     name: "enter code"
   },
   {

@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import axios from "axios";
-import * as config from "../../../config";
+import axios from "axios"
+import * as config from "../../../config"
 
 export default {
     name: "NavBarAdmin",
@@ -54,7 +54,6 @@ li a {
 
 .all-questions {
     border-right: solid 1px grey;
-    /* background-color: white; */
 }
 
 .end-conference {
@@ -63,6 +62,7 @@ li a {
 
 .end-conference a {
     color: white;
+     font-family: 'Open Sans', sans-serif;
 }
 
 .router-link-exact-active {

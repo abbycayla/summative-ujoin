@@ -26,8 +26,8 @@
 </template>
 
 <script>
-import axios from "axios";
-import * as config from "../../../config";
+import axios from "axios"
+import * as config from "../../../config"
 import HeaderAdmin from "./HeaderAdmin.vue"
 export default {
     name: "ConferenceDetails",
@@ -98,7 +98,7 @@ li a {
     
 }
 .edit{
-    background-color: #454c45;
+    background-color: #28313f;
 }
 .host a, .edit a {
   color: white;

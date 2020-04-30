@@ -25,8 +25,8 @@
 </template>
  
 <script>
-import axios from "axios";
-import * as config from "../../../config";
+import axios from "axios"
+import * as config from "../../../config"
 import HeaderAdmin from "./HeaderAdmin.vue"
 export default {
     name: "CreateConference",
@@ -45,19 +45,19 @@ export default {
     },
     methods: {
     checkForm: function(evt) {
-      evt.preventDefault();
-      this.errors = [];
+      evt.preventDefault()
+      this.errors = []
       if (!this.event.title) {
-        this.errors.push("Title required");
+        this.errors.push("Title required")
       }
       if (!this.event.body) {
-        this.errors.push("Body required");
+        this.errors.push("Body required")
       }
       if (!this.event.code) {
-        this.errors.push("Code required");
+        this.errors.push("Code required")
       }
       if (!this.errors.length) {
-        this.createEvent();
+        this.createEvent()
       }
     },
     createEvent: function() {
@@ -82,7 +82,6 @@ export default {
 </script>
 
 
-
 <style scoped>
 .create-conference {
     height: 100vh;
@@ -93,14 +92,14 @@ export default {
 .create-conference-heading {
     display: flex;
     justify-content: center;
-    margin-bottom: 40px;
+
 }
 
 h1 {
     text-align: center;
     font-size: 2em;
     font-weight: 400; 
-    margin: 0px 20px;
+    margin: 30px 20px 30px 20px;
 }
 
 .back {
@@ -130,8 +129,13 @@ h1 {
     font-size: 1.5em;
 }
 
+.submit:hover {
+cursor: pointer;
+}
+
 label {
   margin: 50px 0px;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .error {
@@ -145,7 +149,7 @@ label {
   justify-content: center;
 }
 
-input {
+input[type=text] {
   margin: 5px 0px 20px 0px;
   border: 1px solid #2b313f;
   width: 250px;
@@ -154,12 +158,18 @@ input {
   padding-left: 10px;
 }
 
+
+.description {
+  padding-bottom: 90px;
+  padding-top: 20px;
+}
+
 .description {
   height: 60px;
 }
 
 @media only screen and (min-width: 768px) {
-  input {
+  input[type=text] {
     width: 500px;
     height: 50px;
   }
@@ -179,7 +189,12 @@ input {
 .submit {
   font-size: 1.5em;
   width: 100px;
-  padding: 0;
+  padding: 0px;
 }
 }
 
+
+
+
+ 
+</style>
