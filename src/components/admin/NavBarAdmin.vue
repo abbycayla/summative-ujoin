@@ -2,8 +2,10 @@
   <div> 
       <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
       <ul>
+        <div v-for="event in events" :key="event.id">
           <li class="all-questions"> <router-link v-bind:to="'/all-items-admin'"> All <br /> Questions </router-link> </li>
-          <li class="end-conference">  <router-link :to="'/conference-details/:eventId'">  End  <br /> Conference  </router-link> </li>
+          <li class="end-conference">  <router-link :to="{name: 'details', params: {eventId: event.id}}">  End  <br /> Conference  </router-link> </li>
+        </div>
       </ul>
   </div>
 </template>
@@ -16,9 +18,27 @@ export default {
     name: "NavBarAdmin",
      data: function(){
       return{
-       event: {},
+       events: {},
+       events: []
       }
     }, 
+      methods: {
+  getEvents: function() {
+      let userId = localStorage.getItem('userId')
+      return axios
+        .get(`${config.apiUrl}/users/${userId}/events`)
+        .then(function (response) {
+          return response.data.events;
+        })
+        .catch(function(error){
+          console.log(error)
+        })
+    }
+
+   , created: async function() {
+    this.events = await this.getEvents()
+   }
+      }
 }
 </script>
 
@@ -59,6 +79,7 @@ li a {
 
 .end-conference a {
     color: white;
+     font-family: 'Open Sans', sans-serif;
 }
 
 .router-link-exact-active {

@@ -80,7 +80,8 @@ export default {
     }
 }
 </script>
- 
+
+
 <style scoped>
 
 .create-conference {
@@ -90,15 +91,17 @@ export default {
 }
  
 .create-conference-heading {
- display: flex;
- justify-content: center;
+    display: flex;
+    justify-content: center;
+
 }
  
 h1 {
- text-align: center;
- font-size: 2em;
- font-weight: 400; 
- margin: 0px 20px 30px 20px;
+    text-align: center;
+    font-size: 2em;
+    font-weight: 400; 
+    margin: 30px 20px 30px 20px;
+    color: #454c45;
 }
  
 .back {
@@ -128,13 +131,14 @@ h1 {
  text-decoration: none;
  font-size: 1.5em;
 }
- 
+
 .submit:hover {
 cursor: pointer;
 }
- 
+
 label {
- margin: 50px 0px;
+  margin: 50px 0px;
+  font-family: 'Open Sans', sans-serif;
 }
  
 .error {

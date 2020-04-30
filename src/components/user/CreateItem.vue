@@ -93,9 +93,19 @@ export default {
 
  
 <style scoped>
+
+
+
+.create-item-heading i {
+  font-size: 40px;
+  color: #f2f2f2;
+  
+}
+
+
  
 .create-item {
-    background-color: #454c45;
+    background-color: #2B313F;
     height: 100vh;
     color: white;
     font-family: 'Open Sans', sans-serif;
@@ -104,14 +114,18 @@ export default {
 .create-item-heading {
     display: flex;
     justify-content: center;
-    margin-bottom: 40px; 
+    margin-bottom: 40px;
+    background-color: #2B313F;
+    
 }
 
-input {
+input{
     height: 150px;
     width: 250px;
     border: none;
     outline: none;
+    padding-left: 10px;
+    padding-bottom: 100px;
 }
  
 h1 {
@@ -119,6 +133,7 @@ h1 {
     font-size: 2em;
     font-weight: lighter; 
     margin: 0px 20px;
+    margin-top: 10px;
 }
  
 button {
@@ -126,7 +141,7 @@ button {
     margin-right: auto;
     margin-left: auto;
     margin-top: 13px;
-    /* width: 20px; */
+   
 }
  
 .body-textarea {
@@ -146,18 +161,19 @@ p {
 }
  
 .submit {
-    width: 100px;
-    height: 50px;
-    border: none;
-    background-color: #4baced;
-    outline: none;
-    display: block;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 20px;
-     color: white;
-    text-decoration: none;
-    font-size: 1.5em;
+ height: 50px;
+ width: 120px;
+ border: none;
+ background-color: #4baced;
+ outline: none;
+ display: block;
+ margin-right: auto;
+ margin-left: auto;
+ margin-top: 20px;
+ color: white;
+ text-decoration: none;
+ font-size: 1.5em;
+ padding: 0;
 }
 
 .back {
