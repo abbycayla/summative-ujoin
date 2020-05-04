@@ -21,7 +21,7 @@
           <input  type="text"> <br />
           <div class="form-buttons">
 <button class="delete"><a href="#" @click.prevent="deleteEvent()"> Delete </a></button>
-          <input class="submit" type="submit" value="Create">
+          <input class="submit" type="submit" value="Update">
           </div>
           
         </form>
@@ -60,7 +60,7 @@ deleteEvent: function(){
  
       return axios
         .delete(`${config.apiUrl}/users/${userId}/events/${eventId}`)
-       .then((response) => {
+       .then(() => {
        
      this.$router.push({ path: "/create-conference"})
         })

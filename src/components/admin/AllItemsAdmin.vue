@@ -1,6 +1,7 @@
 <template>
   <div class="body">
     <HeaderConference/> 
+    <div class="edit-items">
     <div class="admin-questions">
  <h1> Questions </h1>
     </div>
@@ -10,7 +11,7 @@
           <div class="item-content">
         <h1>name</h1>
       <h2>  <router-link :to="{
-              name: 'itemDetail',
+              name: 'itemDetailAdmin',
               params: {itemId: item.id}
               }"> 
               <h3> {{item.body}} </h3>
@@ -18,15 +19,20 @@
       </div>
       <div class="item-options">
           <p class="reply">Replied</p>
-          <p>Delete</p>
+          <div class="form-buttons">
+   <button class="delete"><a href="#" @click.prevent="deleteItem(item.id)"> Delete </a></button>
+          </div>
+       
           </div> 
           </div>
     
       </div>
-         <ul class="buttons-nav">
+         <!-- <ul class="buttons-nav">
       <li class="edit"> <router-link v-bind:to="'/edit-conference'"> Edit <br/> Conference </router-link> </li>
          <li class="host"><router-link v-bind:to="{path: '/all-items-admin'}"> HOST</router-link></li>
-      </ul>
+      </ul> -->
+      </div>
+      <NavBarAdmin/>
        </div>
        
 </template>
@@ -38,12 +44,12 @@ import NavBarAdmin from "./NavBarAdmin"
 import HeaderConference from "../user/HeaderConference"
 
 export default {
-
     name: "AllItemsAdmin",
      components: {
       HeaderConference,
       NavBarAdmin
     },
+
     data: function(){
         return {
             items: [],
@@ -65,14 +71,64 @@ export default {
           console.log(error)
         })
     },
+    getItems: function() {
+        let userId = localStorage.getItem('userId')
+        let eventId = localStorage.getItem('eventId')
+      return axios
+        .get(`${config.apiUrl}/users/${userId}/events/${eventId}/items`)
+        .then(function (response) {
+          return response.data.items
+        })
+        .catch(function(error){
+          console.log(error)
+        })
+    }, 
+    deleteItem: function(itemId){
+ let userId = localStorage.getItem('userId')
+//  let itemId = localStorage.getItem('itemId')
+  let eventId = localStorage.getItem('eventId')
+ 
+ return axios
+ .delete(`${config.apiUrl}/users/${userId}/events/${eventId}/items/${itemId}`)
+ .then(async() => {
+this.items = await this.getItems()
+this.$router.push('/all-items-admin').catch(err => {}) //navidation error fixed with this 
+  //  this.$router.push({ path: "/all-items-admin"})
+    console.log('deleted')
+ })
+ .catch(function(error) {
+ 
+ console.log(error)
+ });
+ }
+
 
    }, created: async function() {
       this.items = await this.getMyItems()
-   },
+   }
 }
 </script>
-
+ 
 <style scoped>
+.edit-items {
+   background-color: #2B313F;
+   padding-bottom: 250px;
+}
+
+.form-buttons button{
+background-color: #f2f2f2;
+border: none;
+}
+
+.form-buttons a {
+   color: #28313f;
+    text-decoration: none;
+    font-size: 20px;
+    border: none;
+  font-family: 'Open Sans', sans-serif;
+  
+}
+
 ul {
   
   width: 100%;
@@ -109,37 +165,86 @@ li a {
   color: white;
 }
 
+.adminQuestions h1{ 
+  color: white;
+}
+
+div {
+    font-family: 'Open Sans', sans-serif;
+}
 .body {
     background-color: #28313f;
 
     
 }
 
-.item-box {
+ul {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   background-color: #f2f2f2;
-  border: #f2f2f2 1px solid;
-  margin-left: 40px;
-  margin-right: 40px;
- margin-top: 40px;
- margin-bottom: 30px;
+  border: none;
+
   }
 
+li {
+ padding: 5% 10px;
+ text-align: center;
+ outline: none;
+ list-style-type: none;
+ width: 220px;
+}
+li a {
+ font-size: 1.2em;
+ text-decoration: none;
+ color: #28313f;
+}
+.host{
+ background-color: #4baced;
+ 
+}
+.edit{
+ background-color: white;
+}
+.host a, .edit a {
+ color: #28313f;
+}
+.host {
+ padding-top: 30px;
+}
+ 
+.adminQuestions h1{ 
+ color: white;
+}
+ 
+.body {
+ background-color: #28313f;
+}
+ 
+.item-box {
+ display: flex;
+ justify-content: space-between;
+ background-color: #f2f2f2;
+ border: #f2f2f2 1px solid;
+ margin-left: 40px;
+ margin-right: 40px;
+ margin-top: 40px;
+ margin-bottom: 30px;
+ }
+ 
 .item-options {
-  padding-bottom: 10px;
-  border-left: #454C59 2px solid;
-  font-family: 'Open Sans', sans-serif;
-  color: #454C59;
-  padding-bottom: 10px;
+ padding-bottom: 10px;
+ border-left: #454C59 2px solid;
+ color: #454C59;
+ padding-bottom: 10px;
 }
-
+ 
 .reply {
-  border-bottom: #454C59 2px solid;
-  background-color: #54a9de;
-  padding-bottom: 10px;
+ border-bottom: #454C59 2px solid;
+ background-color: #54a9de;
+ padding-bottom: 10px;
 }
-
+ 
 h1 {
     font-family: 'Open Sans', sans-serif;
     margin-bottom: 8px;
@@ -148,49 +253,66 @@ h1 {
     font-size: 30px;
 }
 
+h2 {
+ margin-bottom: 8px;
+ text-align: center;
+ color: #454C59;
+ font-size: 30px;
+}
+ 
 h3 {
       color: #454C59;
   font-family: 'Open Sans', sans-serif;
   font-size: 15px;
 }
-
+ 
 a {
-  text-decoration: none;
-  color: #454C59;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 0.8em;
-  font-weight: lighter;
+ text-decoration: none;
+ color: #454C59;
+ font-size: 0.8em;
+ font-weight: lighter;
 }
-
+ 
 p {
-  padding-top: 10px;
+ padding-top: 10px;
 }
-
+ 
 @media only screen and (min-width: 768px) {
 
-  .item-box {
-    margin-left: 20%;
-    margin-right: 20%;
-  }
+.form-buttons a {
+ padding-left: 15px;
+  
+}
 
-  .item-content {
-    width: 80%;
-  }
+ .edit-items {
+   background-color: #2B313F;
+   padding-bottom: 400px;
+}
 
-  .item-options{
-    width: 40%;
-  }
 
-  p {
-    padding-left: 20px;
-  }
-
-  h3 {
-    padding-left: 20px;
-  }
-
-  h2 {
-    padding-left: 20px;
-  }
+ .item-box {
+ margin-left: 20%;
+ margin-right: 20%;
+ }
+ 
+ .item-content {
+ width: 80%;
+ }
+ 
+ .item-options{
+ width: 40%;
+ }
+ 
+ p {
+ padding-left: 20px;
+ }
+ 
+ h3 {
+ padding-left: 20px;
+ }
+ 
+ h2 {
+ padding-left: 20px;
+ }
 }
 </style>

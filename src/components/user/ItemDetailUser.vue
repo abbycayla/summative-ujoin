@@ -1,35 +1,42 @@
 <template>
- <div class="reply-to-item"> 
-      <HeaderConference/>
+  <div class="reply-to-item"> 
+    <HeaderConference/>
       <div class="reply-heading">
-        
-      <div class="heading-title">
-      <h1> Question Asked By: </h1>
-      </div>
+        <div class="heading-button">
+          <router-link v-bind:to="'/all-items-user'"> 
+            <img class="back" src="@/assets/back-light.png"> 
+          </router-link> 
+        </div>
+        <div class="heading-title">
+          <h1> Question Asked By: </h1>
+        </div>
       </div>
       <h2> Username </h2>
       <div class="textarea-wrapper">
-      <p class="users-question"> {{item.body}}</p>
-      <p class="users-reply"> Reply </p>
+        <p class="users-question"> {{item.body}}</p>
+        <p class="users-reply"> Reply </p>
       </div>
-      <button class="submit"> <router-link v-bind:to="'/all-items-admin'"> Submit </router-link> </button>
-      <NavBarAdmin/>
+      <!-- <button class="submit">   
+        <router-link v-bind:to="'/all-items-admin'"> Submit </router-link> 
+      </button> -->
+      <NavBarUser/>
   </div>
 </template>
 
 <script>
-import axios from "axios"
-import * as config from "../../../config"
+import axios from "axios";
+import * as config from "../../../config";
 
 import HeaderConference from "./HeaderConference"
-import NavBarAdmin from "../admin/NavBarAdmin"
+import NavBarUser from "./NavBarUser"
 
 export default {
-    name: "ItemDetail",
+    name: "ItemDetailUser",
     components: {
-      NavBarAdmin,
+      NavBarUser,
       HeaderConference
     },
+
     data: function(){
         return {
             item: {}
@@ -43,7 +50,6 @@ export default {
       return axios
         .get(`${config.apiUrl}/users/${userId}/events/${eventId}/items/${itemId}`)
         .then(function (response) {
-
           return response.data.item
         })
         .catch(function(error){
@@ -57,13 +63,12 @@ export default {
       this.item = await this.getItem(itemId)
       console.log(this.item)
     }
-
 }
 </script>
 
 <style scoped>
 .reply-to-item {
-    background-color: #454c45;
+    background-color: #2B313F;
     height: 100vh;
     color: white;
     font-family: 'Open Sans', sans-serif;
@@ -73,12 +78,11 @@ export default {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
-    
 }
 
 .users-question {
   background-color: white;
-  color: #454c45;
+  color: #2B313F;
   padding: 20px;
   width: 250px;
   height: 120px;
@@ -87,7 +91,7 @@ export default {
 
 .users-reply {
   background-color: white;
-  color: #454c45;
+  color: #2B313F;
   padding: 20px;
   width: 250px;
   height: 120px;
@@ -140,19 +144,14 @@ textarea {
     text-decoration: none;
 }
 
-
-
-
-
-
-@media only screen and (min-width: 768px) {
-
- textarea {
-    width: 50%;
+.back {
+    margin-top: 8px;
+    width: 30px;
 }
 
+@media only screen and (min-width: 768px) {
 h1 {
-     font-size: 3.2em;
+     font-size: 3em;
 }
 
 h2 {
@@ -165,24 +164,14 @@ h2 {
     width: 50px;
 }
 
-ul {
-  bottom: 60px;
-  left: 31%;
-
-}
-
-li {
-  padding: 1% 2%;
-  margin: 0px 70px;
-}
-
 .users-question {
   width: 400px;
-
+  height: 100px;
 }
 
 .users-reply {
   width: 400px;
+  height: 100px;
 }
 
 }

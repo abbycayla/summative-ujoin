@@ -14,6 +14,11 @@
      <h1> Log in  </h1>
  <label  for="firstName">Enter email</label>
  <input v-model="user.email" type="text" placeholder="Email" />
+ <div v-if="errors.length" class="errors">
+<ul>
+  <li v-for="error in errors" :key="error">{{ error }}</li>
+</ul>
+</div>
   <input class="join" type="submit" value="Login" />
        
   </div>
@@ -27,12 +32,7 @@
 
  
 </form>
-<div v-if="errors.length">
-<p>Please correct the errors</p>
-<ul>
-  <li v-for="error in errors" :key="error">{{ error }}</li>
-</ul>
-</div>
+
      
   </div>
 </template>
@@ -95,6 +95,16 @@ name: "Login",
 </script>
 
 <style scoped>
+
+.errors p, li {
+font-family: 'Open Sans', sans-serif;
+font-size: 15px;
+list-style: none;
+}
+
+.errors {
+text-align: center;
+}
 
 .ohnohoney{
   opacity: 0;

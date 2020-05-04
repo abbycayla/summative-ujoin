@@ -3,9 +3,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <HeaderConference/>
     <div class="create-item-heading">
-        <div class="item-button">
-            
-            <button> <router-link v-bind:to="'/all-items-user'"> <i class='fas fa-angle-left'></i> </router-link> </button>
+        <div class="heading-button">
+            <router-link v-bind:to="'/all-items-user'"> 
+              <i class='fas fa-angle-left'></i>
+            </router-link>
         </div>
         <div class="heading-title">
             <h1> Ask a Question </h1>
@@ -36,8 +37,8 @@
 </template> 
  
 <script>
-import axios from "axios";
-import * as config from "../../../config";
+import axios from "axios"
+import * as config from "../../../config"
 
 import NavBarUser from "./NavBarUser"
 import HeaderConference from "./HeaderConference"
@@ -79,19 +80,15 @@ export default {
  .then((response) => {
  const item = response.data.item
  console.log(item)
-
- this.$router.push({ path: "/my-items"})
- debugger
+ this.$router.push({ path: "/my-items"});
  console.log(this.$route.params)
  })
  .catch(function(error) {
-
  console.log(error);
  })
  }, 
  }
 }
-
 </script>
 
  
@@ -102,7 +99,7 @@ export default {
 .create-item-heading i {
   font-size: 40px;
   color: #f2f2f2;
-  
+  margin-top: 12px;
 }
 
 
@@ -122,7 +119,7 @@ export default {
     
 }
 
-input[type=text]{
+input{
     height: 150px;
     width: 250px;
     border: none;
@@ -164,18 +161,19 @@ p {
 }
  
 .submit {
-    width: 100px;
-    height: 50px;
-    border: none;
-    background-color: #4baced;
-    outline: none;
-    display: block;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 20px;
-     color: white;
-    text-decoration: none;
-    font-size: 1.5em;
+ height: 50px;
+ width: 120px;
+ border: none;
+ background-color: #4baced;
+ outline: none;
+ display: block;
+ margin-right: auto;
+ margin-left: auto;
+ margin-top: 20px;
+ color: white;
+ text-decoration: none;
+ font-size: 1.5em;
+ padding: 0;
 }
 
 .back {
@@ -191,9 +189,16 @@ p {
 }
 
 @media only screen and (min-width: 768px) {
-.body-textarea {
-    margin-bottom: 50px;
+
+    .create-item-heading i {
+ 
+  margin-top: 25px;
 }
+
+.body-textarea {
+    margin-bottom: 30px;
+}
+
 textarea {
     width: 50%;
 }
@@ -205,7 +210,7 @@ input {
  
 h1 {
     font-size: 3em;
-    padding-bottom: 10px;
+    padding-bottom: 0px;
 }
  
 .back {
@@ -215,7 +220,7 @@ h1 {
 }
  
 p {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
  
 .submit a{

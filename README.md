@@ -84,8 +84,10 @@ ___
 
 1. ADMIN EMAIL : email@gmail.com ( use this to log into admin side)
 2. CREATE CONFERENCE : conference code = 4589 ( enter this code number for creating a confernce code )
-3. 
-3. USER CODE : user code = 4589 ( enter this number when @ enter code on user side )
+3. You MUST have a created conference for user side to function properly so if a confernce is deleted make sure a new one is created
+4. In order to see questions as an admin a user first must create a question on the user side of the app
+5. To return back to main page to log in as a user you must not return via back spacing instead change the URL back to it's original state as it was when you were on the home page
+6. USER CODE : user code = 4589 ( enter this number when @ enter code on user side )
 
 
 

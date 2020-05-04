@@ -15,6 +15,11 @@
      <h1> Enter Code  </h1>
      <p>Should be visible on screen </p>
  <input v-model="user.code" type="text" placeholder="Enter code" />
+ <div v-if="errors.length" class="errors">
+<ul>
+  <li v-for="error in errors" :key="error">{{ error }}</li>
+</ul>
+</div>
 
   <input class="join" type="submit" value="Join" />
        
@@ -29,12 +34,7 @@
 
  
 </form>
-<div v-if="errors.length">
-<p>Please correct the errors</p>
-<ul>
-  <li v-for="error in errors" :key="error">{{ error }}</li>
-</ul>
-</div>
+
      
   </div>
       
@@ -103,6 +103,17 @@ export default {
 
 <style scoped>
 
+
+.errors p, li {
+font-family: 'Open Sans', sans-serif;
+font-size: 15px;
+list-style: none;
+}
+
+.errors {
+text-align: center;
+}
+
 .ohnohoney{
   opacity: 0;
   position: absolute;
@@ -157,7 +168,7 @@ padding: 10px 0px 10px 5px;
 }
 
 .join {
-       margin: 100px 60px 0px 60px;
+       margin: 30px 60px 0px 60px;
        padding: 5px 7px 5px 7px;
        background-color: #4BACED;
        border: none;
