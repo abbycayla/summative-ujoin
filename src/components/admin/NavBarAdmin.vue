@@ -2,10 +2,10 @@
   <div> 
       <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
       <ul>
-        <div v-for="event in events" :key="event.id">
+        <!-- <div v-for="event in events" :key="event.id"> -->
           <li class="all-questions"> <router-link v-bind:to="'/all-items-admin'"> All <br /> Questions </router-link> </li>
           <li class="end-conference">  <router-link :to="{name: 'details', params: {eventId: event.id}}">  End  <br /> Conference  </router-link> </li>
-        </div>
+        <!-- </div> -->
       </ul>
   </div>
 </template>
@@ -18,27 +18,30 @@ export default {
     name: "NavBarAdmin",
      data: function(){
       return{
-       events: {},
+       event: {
+         id: ''
+       },
        events: []
       }
     }, 
       methods: {
-  getEvents: function() {
+    getEvent: function(eventId) {
       let userId = localStorage.getItem('userId')
       return axios
-        .get(`${config.apiUrl}/users/${userId}/events`)
+        .get(`${config.apiUrl}/users/${userId}/events/${eventId}`)
         .then(function (response) {
-          return response.data.events;
+          return response.data.event;
         })
         .catch(function(error){
           console.log(error)
         })
     }
-
+  }
    , created: async function() {
-    this.events = await this.getEvents()
-   }
-      }
+    let eventId = localStorage.getItem('eventId')
+    this.event = await this.getEvent(eventId)
+   },
+      
 }
 </script>
 
@@ -83,7 +86,6 @@ li a {
 }
 
 .router-link-exact-active {
-  font-weight: bold;
   color: #54a9de;
 }
 

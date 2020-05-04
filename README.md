@@ -74,6 +74,7 @@ ___
 
 
 
+
 ## What you'll need to do to run this application 
 
 1. npm install in both client side and server side ( to install mongoose, axios, express, node modules etc.)
@@ -88,6 +89,4 @@ ___
 4. In order to see questions as an admin a user first must create a question on the user side of the app
 5. To return back to main page to log in as a user you must not return via back spacing instead change the URL back to it's original state as it was when you were on the home page
 6. USER CODE : user code = 4589 ( enter this number when @ enter code on user side )
-
-
 

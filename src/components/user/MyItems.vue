@@ -114,6 +114,7 @@ li a {
  
 .body {
  background-color: #28313f;
+ height: 100vh;
 }
  
 .item-box {
