@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import axios from "axios";
-import * as config from "../../../config";
+import axios from "axios"
+import * as config from "../../../config"
 
 export default {
     name: "NavBarAdmin",

@@ -24,9 +24,8 @@
 </template>
 
 <script>
-import axios from "axios";
-import * as config from "../../../config";
-
+import axios from "axios"
+import * as config from "../../../config"
 import HeaderAdmin from "./HeaderAdmin.vue"
 
 export default {
@@ -66,7 +65,7 @@ export default {
 <style scoped>
 .conference-details {
     height: 100vh;
-    color: #454c45;
+    color: #2B313F;
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -75,7 +74,7 @@ h1 {
     font-size: 2em;
     font-weight: 400; 
     margin: 0px 20px;
-    color: #454c45;
+    color: #2B313F;
 
 }
 

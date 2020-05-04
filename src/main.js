@@ -41,7 +41,6 @@ const routes = [
   {
     path: '/enter-code',
     component: EnterCode,
-    // props: true,
     name: "enter code"
   },
   {
@@ -79,8 +78,10 @@ const routes = [
     
   },
   {
-    path: '/edit-item',
+    path: '/edit-item/:itemId',
+    name: "editItem",
     component: EditItem,
+    props: true
   },
   {
     path: '/all-items-admin',

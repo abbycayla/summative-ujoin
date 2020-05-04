@@ -21,7 +21,7 @@
           <input  type="text"> <br />
           <div class="form-buttons">
 <button class="delete"><a href="#" @click.prevent="deleteEvent()"> Delete </a></button>
-          <input class="submit" type="submit" value="Create">
+          <input class="submit" type="submit" value="Update">
           </div>
           
         </form>
@@ -37,8 +37,8 @@
 
 <script>
 
-import axios from "axios";
-import * as config from "../../../config";
+import axios from "axios"
+import * as config from "../../../config"
 import HeaderAdmin from "./HeaderAdmin.vue"
 
 export default {
@@ -60,13 +60,12 @@ deleteEvent: function(){
  
       return axios
         .delete(`${config.apiUrl}/users/${userId}/events/${eventId}`)
-       .then((response) => {
-         console.log('deleted')
+       .then(() => {
        
-     this.$router.push({ path: "/create-conference"});
+     this.$router.push({ path: "/create-conference"})
         })
         .catch(function(error) {
-          console.log(error);
+          console.log(error)
         });
     }
   }

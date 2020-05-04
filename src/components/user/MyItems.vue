@@ -1,22 +1,25 @@
 <template>
   <div class="body">
     <HeaderConference/> 
+  <div class="my-items">
     <h1> My Questions </h1>
     <div v-for="item in items" :key="item.id" :item="item">
        <div class="item-box">
           <div class="item-content">
             <h2>name</h2>
             <h2>  
-              <router-link :to="{name: 'itemDetailUser',params: {itemId: item.id}}"> 
+              <router-link    :to="{name: 'itemDetailUser',params: {itemId: item.id}}"> 
                 <h3> {{item.body}} </h3>
               </router-link>  
             </h2>
           </div>
           <div class="item-options">
             <p class="reply">Replied</p>
-            <p>Edit</p>
+         
+      <router-link v-bind:to="{name: 'editItem',params: {itemId: item.id}}"> Edit </router-link>
           </div> 
         </div>
+    </div>
     </div>
     <NavBarUser/>
   </div>
@@ -25,12 +28,11 @@
 <script>
 import axios from "axios";
 import * as config from "../../../config";
-
 import HeaderConference from "./HeaderConference"
 import NavBarUser from "./NavBarUser"
-
+ 
 export default {
-
+ 
     name: "MyItems",
     components:{
         NavBarUser,
@@ -56,26 +58,30 @@ export default {
           console.log(error)
         })
     } 
-
+ 
     }, created: async function() {
     //   this.event = await this.getEvent(eventId)
       this.items = await this.getMyItems()
    },
 }
 </script>
+<style scoped>
 
-<style>
 
+.my-items {
+  background-color: #28313f;
+  padding-bottom: 400px;
+}
+ 
 div {
     font-family: 'Open Sans', sans-serif;
 }
-
+ 
 ul {
   width: 100%;
   display: flex;
   background-color: white;
 }
-
 li {
  padding: 5% 10px;
  text-align: center;
@@ -142,7 +148,6 @@ h1 {
  margin: 30px 20px 30px 20px;
  color: white;
 }
-
 h2 {
  margin-bottom: 8px;
  text-align: center;
@@ -158,8 +163,9 @@ h3 {
 a {
  text-decoration: none;
  color: #454C59;
- font-size: 0.8em;
+ font-size: 20px;
  font-weight: lighter;
+
 }
  
 p {
@@ -192,5 +198,10 @@ p {
  h2 {
  padding-left: 20px;
  }
+
+ .item-options a {
+ padding-left: 20px;
+ padding-bottom: 10px;
+}
 }
 </style>

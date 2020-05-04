@@ -1,7 +1,8 @@
 <template>
   <div class="body">
     <HeaderConference/> 
-    <div class="adminQuestions">
+    <div class="edit-items">
+    <div class="admin-questions">
  <h1> Questions </h1>
     </div>
      
@@ -18,10 +19,18 @@
       </div>
       <div class="item-options">
           <p class="reply">Replied</p>
-          <p>Delete</p>
+          <div class="form-buttons">
+   <button class="delete"><a href="#" @click.prevent="deleteItem(item.id)"> Delete </a></button>
+          </div>
+       
           </div> 
           </div>
     
+      </div>
+         <!-- <ul class="buttons-nav">
+      <li class="edit"> <router-link v-bind:to="'/edit-conference'"> Edit <br/> Conference </router-link> </li>
+         <li class="host"><router-link v-bind:to="{path: '/all-items-admin'}"> HOST</router-link></li>
+      </ul> -->
       </div>
       <NavBarAdmin/>
        </div>
@@ -29,9 +38,8 @@
 </template>
 
 <script>
-import axios from "axios";
-import * as config from "../../../config";
-
+import axios from "axios"
+import * as config from "../../../config"
 import NavBarAdmin from "./NavBarAdmin"
 import HeaderConference from "../user/HeaderConference"
 
@@ -62,7 +70,39 @@ export default {
         .catch(function(error){
           console.log(error)
         })
-    } ,
+    },
+    getItems: function() {
+        let userId = localStorage.getItem('userId')
+        let eventId = localStorage.getItem('eventId')
+      return axios
+        .get(`${config.apiUrl}/users/${userId}/events/${eventId}/items`)
+        .then(function (response) {
+          return response.data.items
+        })
+        .catch(function(error){
+          console.log(error)
+        })
+    }, 
+    deleteItem: function(itemId){
+ let userId = localStorage.getItem('userId')
+//  let itemId = localStorage.getItem('itemId')
+  let eventId = localStorage.getItem('eventId')
+ 
+ return axios
+ .delete(`${config.apiUrl}/users/${userId}/events/${eventId}/items/${itemId}`)
+ .then(async() => {
+this.items = await this.getItems()
+this.$router.push('/all-items-admin').catch(err => {}) //navidation error fixed with this 
+  //  this.$router.push({ path: "/all-items-admin"})
+    console.log('deleted')
+ })
+ .catch(function(error) {
+ 
+ console.log(error)
+ });
+ }
+
+
    }, created: async function() {
       this.items = await this.getMyItems()
    }
@@ -70,6 +110,25 @@ export default {
 </script>
  
 <style scoped>
+.edit-items {
+   background-color: #2B313F;
+   padding-bottom: 250px;
+}
+
+.form-buttons button{
+background-color: #f2f2f2;
+border: none;
+}
+
+.form-buttons a {
+   color: #28313f;
+    text-decoration: none;
+    font-size: 20px;
+    border: none;
+  font-family: 'Open Sans', sans-serif;
+  
+}
+
 ul {
   width: 100%;
   display: flex;
@@ -101,6 +160,10 @@ li a {
   padding-top: 30px;
 }
 
+.admin-questions h1{ 
+  color: white;
+}
+
 .adminQuestions h1{ 
   color: white;
 }
@@ -120,11 +183,8 @@ ul {
   display: flex;
   justify-content: space-between;
   background-color: #f2f2f2;
-  border: #f2f2f2 1px solid;
-  margin-left: 40px;
-  margin-right: 40px;
- margin-top: 40px;
- margin-bottom: 30px;
+  border: none;
+
   }
 
 li {
@@ -219,7 +279,18 @@ p {
 }
  
 @media only screen and (min-width: 768px) {
- 
+
+.form-buttons a {
+ padding-left: 15px;
+  
+}
+
+ .edit-items {
+   background-color: #2B313F;
+   padding-bottom: 400px;
+}
+
+
  .item-box {
  margin-left: 20%;
  margin-right: 20%;

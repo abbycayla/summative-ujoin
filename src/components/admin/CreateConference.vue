@@ -25,8 +25,8 @@
 </template>
  
 <script>
-import axios from "axios";
-import * as config from "../../../config";
+import axios from "axios"
+import * as config from "../../../config"
 import HeaderAdmin from "./HeaderAdmin.vue"
 export default {
     name: "CreateConference",
@@ -45,19 +45,19 @@ export default {
     },
     methods: {
     checkForm: function(evt) {
-      evt.preventDefault();
-      this.errors = [];
+      evt.preventDefault()
+      this.errors = []
       if (!this.event.title) {
-        this.errors.push("Title required");
+        this.errors.push("Title required")
       }
       if (!this.event.body) {
-        this.errors.push("Body required");
+        this.errors.push("Body required")
       }
       if (!this.event.code) {
-        this.errors.push("Code required");
+        this.errors.push("Code required")
       }
       if (!this.errors.length) {
-        this.createEvent();
+        this.createEvent()
       }
     },
     createEvent: function() {
@@ -86,7 +86,7 @@ export default {
 
 .create-conference {
  height: 100vh;
- color: #454c45;
+ color: #2B313F;
  font-family: 'Open Sans', sans-serif;
 }
  
@@ -95,13 +95,14 @@ export default {
     justify-content: center;
 
 }
+
+
  
 h1 {
     text-align: center;
     font-size: 2em;
     font-weight: 400; 
     margin: 30px 20px 30px 20px;
-    color: #454c45;
 }
  
 .back {
@@ -136,6 +137,10 @@ h1 {
 cursor: pointer;
 }
 
+.submit:hover {
+cursor: pointer;
+}
+
 label {
   margin: 50px 0px;
   font-family: 'Open Sans', sans-serif;
@@ -152,7 +157,7 @@ label {
  justify-content: center;
 }
  
-input {
+input[type=text] {
  margin: 5px 0px 20px 0px;
  border: 1px solid #2b313f;
  width: 250px;

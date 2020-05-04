@@ -5,7 +5,7 @@
     <div class="create-item-heading">
         <div class="heading-button">
             <router-link v-bind:to="'/all-items-user'"> 
-                <img src="@/assets/back-light.png" alt="back-light" class="back"> 
+              <i class='fas fa-angle-left'></i>
             </router-link>
         </div>
         <div class="heading-title">
@@ -37,8 +37,8 @@
 </template> 
  
 <script>
-import axios from "axios";
-import * as config from "../../../config";
+import axios from "axios"
+import * as config from "../../../config"
 
 import NavBarUser from "./NavBarUser"
 import HeaderConference from "./HeaderConference"
@@ -60,9 +60,9 @@ export default {
  },
  methods: {
  checkForm: function(evt) {
- evt.preventDefault();
+ evt.preventDefault()
  
- this.errors = [];
+ this.errors = []
  
  if (!this.item.body) {
  this.errors.push("Body required");
@@ -85,7 +85,7 @@ export default {
  })
  .catch(function(error) {
  console.log(error);
- });
+ })
  }, 
  }
 }
@@ -99,7 +99,7 @@ export default {
 .create-item-heading i {
   font-size: 40px;
   color: #f2f2f2;
-  
+  margin-top: 12px;
 }
 
 
@@ -189,6 +189,11 @@ p {
 }
 
 @media only screen and (min-width: 768px) {
+
+    .create-item-heading i {
+ 
+  margin-top: 25px;
+}
 
 .body-textarea {
     margin-bottom: 30px;

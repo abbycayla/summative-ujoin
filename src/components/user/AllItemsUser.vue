@@ -39,8 +39,8 @@
 
 <script>
 
-import axios from "axios";
-import * as config from "../../../config";
+import axios from "axios"
+import * as config from "../../../config"
 import NavBarUser from "./NavBarUser"
 import HeaderConference from "./HeaderConference"
 

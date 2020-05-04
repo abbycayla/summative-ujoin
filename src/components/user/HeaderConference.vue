@@ -21,10 +21,10 @@ export default {
  font-family: 'Open Sans', sans-serif;
  display: flex;
  justify-content: space-between;
- color: #454c45;
+ color: #2B313F;
  background-color: white;
  padding: 30px 20px;
- margin-bottom: 5%;
+ 
 }
  
 h1 {

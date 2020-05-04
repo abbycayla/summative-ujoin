@@ -14,6 +14,11 @@
      <h1> Log in  </h1>
  <label  for="firstName">Enter email</label>
  <input v-model="user.email" type="text" placeholder="Email" />
+ <div v-if="errors.length" class="errors">
+<ul>
+  <li v-for="error in errors" :key="error">{{ error }}</li>
+</ul>
+</div>
   <input class="join" type="submit" value="Login" />
        
   </div>
@@ -27,19 +32,14 @@
 
  
 </form>
-<div v-if="errors.length">
-<p>Please correct the errors</p>
-<ul>
-  <li v-for="error in errors" :key="error">{{ error }}</li>
-</ul>
-</div>
+
      
   </div>
 </template>
 
 <script>
-import axios from "axios";
-import * as config from "../../../config";
+import axios from "axios"
+import * as config from "../../../config"
 export default {
 name: "Login",
  data: function() {
@@ -53,15 +53,15 @@ name: "Login",
   },
  methods: {
   checkForm: function(evt) {
-      evt.preventDefault();
+      evt.preventDefault()
 
-      this.errors = [];
+      this.errors = []
 
       if (this.user.ohNoHoneyName) {
-        this.errors.push("Ha ha got you");
+        this.errors.push("Ha ha got you")
       }
       if (!this.user.email) {
-        this.errors.push("Email required");
+        this.errors.push("Email required")
       }
     
       if (!this.errors.length) {
@@ -83,11 +83,11 @@ name: "Login",
             }
 
            
-          this.$router.push({ path: "/create-conference" });
+          this.$router.push({ path: "/create-conference" })
         })
         .catch(function(error) {
           
-          console.log(error);
+          console.log(error)
         });
     },
     }
@@ -95,6 +95,16 @@ name: "Login",
 </script>
 
 <style scoped>
+
+.errors p, li {
+font-family: 'Open Sans', sans-serif;
+font-size: 15px;
+list-style: none;
+}
+
+.errors {
+text-align: center;
+}
 
 .ohnohoney{
   opacity: 0;

@@ -15,6 +15,11 @@
      <h1> Enter Code  </h1>
      <p>Should be visible on screen </p>
  <input v-model="user.code" type="text" placeholder="Enter code" />
+ <div v-if="errors.length" class="errors">
+<ul>
+  <li v-for="error in errors" :key="error">{{ error }}</li>
+</ul>
+</div>
 
   <input class="join" type="submit" value="Join" />
        
@@ -29,12 +34,7 @@
 
  
 </form>
-<div v-if="errors.length">
-<p>Please correct the errors</p>
-<ul>
-  <li v-for="error in errors" :key="error">{{ error }}</li>
-</ul>
-</div>
+
      
   </div>
       
@@ -42,8 +42,8 @@
 </template>
 
 <script>
-import axios from "axios";
-import * as config from "../../../config";
+import axios from "axios"
+import * as config from "../../../config"
 
 export default {
     name: "EnterCode",
@@ -58,15 +58,15 @@ export default {
   },
  methods: {
   checkForm: function(evt) {
-      evt.preventDefault();
+      evt.preventDefault()
 
-      this.errors = [];
+      this.errors = []
 
       if (this.user.ohNoHoneyName) {
-        this.errors.push("Ha ha got you");
+        this.errors.push("Ha ha got you")
       }
       if (!this.user.code) {
-        this.errors.push("Code required");
+        this.errors.push("Code required")
       }
     
       if (!this.errors.length) {
@@ -91,7 +91,7 @@ export default {
         })
         .catch(function(error) {
       
-          console.log(error);
+          console.log(error)
         });
     },
     }
@@ -102,6 +102,17 @@ export default {
 
 
 <style scoped>
+
+
+.errors p, li {
+font-family: 'Open Sans', sans-serif;
+font-size: 15px;
+list-style: none;
+}
+
+.errors {
+text-align: center;
+}
 
 .ohnohoney{
   opacity: 0;
@@ -157,7 +168,7 @@ padding: 10px 0px 10px 5px;
 }
 
 .join {
-       margin: 100px 60px 0px 60px;
+       margin: 30px 60px 0px 60px;
        padding: 5px 7px 5px 7px;
        background-color: #4BACED;
        border: none;

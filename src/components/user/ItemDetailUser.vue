@@ -68,7 +68,7 @@ export default {
 
 <style scoped>
 .reply-to-item {
-    background-color: #454c45;
+    background-color: #2B313F;
     height: 100vh;
     color: white;
     font-family: 'Open Sans', sans-serif;
@@ -82,7 +82,7 @@ export default {
 
 .users-question {
   background-color: white;
-  color: #454c45;
+  color: #2B313F;
   padding: 20px;
   width: 250px;
   height: 120px;
@@ -91,7 +91,7 @@ export default {
 
 .users-reply {
   background-color: white;
-  color: #454c45;
+  color: #2B313F;
   padding: 20px;
   width: 250px;
   height: 120px;

@@ -4,7 +4,7 @@
       <div class="reply-heading">
         <div class="heading-button">
           <router-link v-bind:to="'/all-items-admin'"> 
-            <img class="back" src="@/assets/back-light.png"> 
+           <i class='fas fa-angle-left'></i> 
           </router-link> 
         </div>
         <div class="heading-title">
@@ -24,8 +24,8 @@
 </template>
 
 <script>
-import axios from "axios";
-import * as config from "../../../config";
+import axios from "axios"
+import * as config from "../../../config"
 
 import HeaderConference from "../user/HeaderConference"
 import NavBarAdmin from "./NavBarAdmin"
@@ -67,8 +67,15 @@ export default {
 </script>
 
 <style scoped>
+.heading-button i {
+  font-size: 40px;
+  color: #f2f2f2;
+   margin: 5px 10px 0px 10px;
+}
+
+
 .reply-to-item {
-    background-color: #454c45;
+    background-color: #2B313F;
     height: 100vh;
     color: white;
     font-family: 'Open Sans', sans-serif;
@@ -82,7 +89,7 @@ export default {
 
 .users-question {
   background-color: white;
-  color: #454c45;
+  color: #2B313F;
   padding: 20px;
   width: 250px;
   height: 120px;
@@ -91,7 +98,7 @@ export default {
 
 .users-reply {
   background-color: white;
-  color: #454c45;
+  color: #2B313F;
   padding: 20px;
   width: 250px;
   height: 120px;
