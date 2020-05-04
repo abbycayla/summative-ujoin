@@ -71,7 +71,6 @@ export default {
  
 <style scoped>
 ul {
-  
   width: 100%;
   display: flex;
   background-color: white;
@@ -111,6 +110,7 @@ div {
 }
 .body {
     background-color: #28313f;
+    height: 100vh;
 
     
 }
@@ -188,6 +188,7 @@ li a {
 h1 {
     font-family: 'Open Sans', sans-serif;
     margin-bottom: 8px;
+    margin-top: 0px;
     text-align: center;
     color: #454C59;
     font-size: 30px;
