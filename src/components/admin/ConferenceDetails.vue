@@ -12,14 +12,16 @@
         <p >{{event.body}} </p>
       </div>
       <div class="conference-code">
-        <h2> User Entrance Code </h2>
+        <h2> Event Entrance Code </h2>
         <p> {{event.code}} </p>
           </div>
+          
       </div>
       <ul class="buttons-nav">
       <li class="edit"> <router-link v-bind:to="'/edit-conference'"> Edit <br/> Conference </router-link> </li>
-      <li class="host"> <router-link v-bind:to="'/all-items-admin'"> HOST </router-link> </li>
+         <li class="host"><router-link v-bind:to="{name: 'AllItemsAdmin', params:{eventId: event.id}}"> HOST</router-link></li>
       </ul>
+      
   </div>
 </template>
 
@@ -34,20 +36,16 @@ export default {
     }, 
     data: function(){
       return{
-       event: {
-      
-      },
+       event: {},
       }
     },
      methods: {
     getEvent: function(eventId) {
       let userId = localStorage.getItem('userId')
-    // const eventId = this.$route.params.eventId
       return axios
         .get(`${config.apiUrl}/users/${userId}/events/${eventId}`)
         .then(function (response) {
           return response.data.event;
-          // console.log(event)
         })
         .catch(function(error){
           console.log(error)
@@ -71,7 +69,7 @@ export default {
     font-family: 'Open Sans', sans-serif;
 }
 h1 {
-     text-align: center;
+    text-align: center;
     font-size: 2em;
     font-weight: 400; 
     margin: 0px 20px;
@@ -97,6 +95,7 @@ li a {
 }
 .host{
     background-color: #4baced;
+    
 }
 .edit{
     background-color: #454c45;
@@ -147,7 +146,6 @@ ul {
   bottom: 60px;
   left: 24%;
   width: 60%;
-  /* right: 50%; */
 }
 li {
   padding: 4px 7px;

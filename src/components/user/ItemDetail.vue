@@ -31,10 +31,10 @@ export default {
         })
     } 
     },
-    created: function(){
+    created: async function(){
     const itemId = this.$route.params.itemId
         console.log('created', itemId)
-      this.item = this.getItem(itemId)
+      this.item = await this.getItem(itemId)
       console.log(this.item)
     }
 

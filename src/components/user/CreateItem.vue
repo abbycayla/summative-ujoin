@@ -1,40 +1,52 @@
 <template>
-  <div class="create-item"> 
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-      <!-- <HeaderAdmin/> -->
-      <div class="create-item-heading">
-            <div class="heading-button">
-                <router-link > </router-link> 
+ <div class="create-item">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <HeaderConference/>
+    <div class="create-item-heading">
+        <div class="heading-button">
+            <router-link v-bind:to="'/all-items-user'"> <img src="@/assets/back-light.png" alt="back-light" class="back"> </router-link>
+        </div>
+        <div class="heading-title">
+            <h1> Ask a Question </h1>
+        </div>
+    </div>
+
+    <form @submit="checkForm">
+        <div class="create-item-body">
+            <div class="body-textarea">
+                <input v-model="item.body" type="text" name="body" placeholder="Enter a question">
             </div>
-            <div class="heading-title">
-                <h1> Ask a Question </h1>
-            </div>
-      </div>
-      <div class="create-item-body " >
-          <div class="body-textarea">
-              <form  v-on:submit="checkForm">
-            <!-- <textarea name="question" cols="30" rows="10" placeholder="Write question here..."></textarea> -->
-            <input  v-model="event.body" value="stuff">
-                        <input class="submit" type="submit" value="Submit">
- 
-            </form>
-            </div>
-            <div> 
+        </div>
+
+        <div> 
             <p> Questions are being monitored. If your question is inappropriate, it will be deleted.</p>
-            </div>
-      </div>
-   <NavBarUser/>
-  </div>
-</template>
+        </div>
+ 
+        <div>
+            <input  class="submit" type="submit" value="Submit">
+        </div>
+
+        <div v-if="errors.length" class="error">
+            Please enter a question before submitting 
+        </div>
+    </form>
+    <NavBarUser/>
+ </div>
+</template> 
  
 <script>
 import axios from "axios";
 import * as config from "../../../config";
+
+import NavBarUser from "./NavBarUser"
+import HeaderConference from "./HeaderConference"
+
  
 export default {
  name: "CreateItem",
  components: {
- 
+ NavBarUser,
+ HeaderConference
  },
  data: function(){
  return{
@@ -97,6 +109,12 @@ export default {
     
 }
 
+input {
+    height: 150px;
+    width: 250px;
+    border: none;
+    outline: none;
+}
  
 h1 {
     text-align: center;
@@ -110,6 +128,7 @@ button {
     margin-right: auto;
     margin-left: auto;
     margin-top: 13px;
+    /* width: 20px; */
 }
  
 .body-textarea {
@@ -118,14 +137,6 @@ button {
     display: flex;
     justify-content: center;
     margin-bottom: 30px;
-}
- 
-textarea {
-    border: none;
-    padding: 20px;
-    width: 70%;
-    outline: none;
- 
 }
  
 p {
@@ -137,7 +148,8 @@ p {
 }
  
 .submit {
-    padding: 5px 7px;
+    width: 100px;
+    height: 50px;
     border: none;
     background-color: #4baced;
     outline: none;
@@ -150,22 +162,29 @@ p {
     font-size: 1.5em;
 }
 
-
- 
 .back {
     margin-top: 8px;
     width: 30px;
 }
 
+.error {
+    font-size: .7em;
+    font-weight: lighter;
+    text-align: center;
+    padding-top: 20px;
+}
 
- 
 @media only screen and (min-width: 768px) {
 .body-textarea {
     margin-bottom: 50px;
 }
- 
-    textarea {
+textarea {
     width: 50%;
+}
+
+input {
+    height: 200px;
+    width: 600px;
 }
  
 h1 {
@@ -180,7 +199,7 @@ h1 {
 }
  
 p {
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
  
 .submit a{
@@ -188,7 +207,6 @@ p {
 }
  
 }
-
 
  
 </style>

@@ -3,15 +3,10 @@
     <HeaderAdmin/>
     <div class="create-conference-heading">
       <div>
-      <h1> Create a Conference </h1>
+        <h1> Create a Conference </h1>
       </div>
-      </div>
-      <div v-if="errors.length">
-      Please correct the following error(s):
-      <ul>
-        <li v-for="error in errors" :key="error">{{ error }}</li>
-      </ul>
     </div>
+
       <div class="form">
         <div>
         <form v-on:submit="checkForm">
@@ -19,10 +14,11 @@
           <input v-model="event.title" type="text"> <br />
           <label for="body"> Description </label> <br />
           <input v-model="event.body"  class="description" type="text"> <br />
-          <label for="code"> event Entrance Code </label> <br />
+          <label for="code"> Event Entrance Code </label> <br />
           <input v-model="event.code" type="text"> <br />
-            <input class="submit" type="submit" value="Create">
+          <input class="submit" type="submit" value="Create">
         </form>
+        <div v-if="errors.length" class="error"> Please fill in the boxes </div>
         </div>
       </div>
   </div>
@@ -62,7 +58,6 @@ export default {
       }
       if (!this.errors.length) {
         this.createEvent();
-        // this.getEvent()
       }
     },
     createEvent: function() {
@@ -75,30 +70,14 @@ export default {
         if (event){
           localStorage.eventId = event.id
         }
-      // this.getEventDetails(eventId)
     this.$router.push({ name: "details", params: {eventId: event.id} });
     console.log(this.$route.params)
  })
         .catch(function(error) {
-          // handle error
           console.log(error);
         });
     }, 
-  //   getEvent: function(eventId) {
-  //     let userId = localStorage.getItem('userId')
-  //     return axios
-  //       .get(`${config.apiUrl}/users/${userId}/events/${eventId}`)
-  //       .then(function (response) {
-  //       return response.data.event
-  //       })
-  //   }
-  // , created: async function() {
-  //   const eventId = this.$route.params.eventId
-  //   if(eventId){
-  //     this.event = await this.getEvent(eventId)
-  //   }
-  //  }
-}
+    }
 }
 </script>
 
@@ -106,7 +85,6 @@ export default {
 
 <style scoped>
 .create-conference {
-    /* background-color: #454c45; */
     height: 100vh;
     color: #454c45;
     font-family: 'Open Sans', sans-serif;
@@ -116,7 +94,6 @@ export default {
     display: flex;
     justify-content: center;
     margin-bottom: 40px;
-    /* margin: 0% 50%; */
 }
 
 h1 {
@@ -133,9 +110,9 @@ h1 {
     margin-top: 8px;
 }
 
-
 .submit {
-    padding: 5px 7px;
+    height: 50px;
+    width: 100px;
     border: none;
     background-color: #4baced;
     outline: none;
@@ -143,8 +120,10 @@ h1 {
     margin-right: auto;
     margin-left: auto;
     margin-top: 20px;
+     color: white;
+    text-decoration: none;
+    font-size: 1.5em;
 }
-
 .submit a {
     color: white;
     text-decoration: none;
@@ -155,32 +134,38 @@ label {
   margin: 50px 0px;
 }
 
+.error {
+    font-size: .9em;
+    font-weight: lighter;
+    text-align: center;
+}
 
 .form {
   display: flex;
   justify-content: center;
-  /* font-weight: 400; */
-  /* padding-top: 0px; */
 }
 
 input {
   margin: 5px 0px 20px 0px;
   border: 1px solid #2b313f;
-  padding: 10px 30px;
+  width: 250px;
+  height: 30px;
+  outline: none;
+  padding-left: 10px;
 }
 
 .description {
-  padding: 40px 30px;
+  height: 60px;
 }
 
 @media only screen and (min-width: 768px) {
   input {
-    padding: 15px 200px;
-    margin: 10px 0px 20px 0px;
+    width: 500px;
+    height: 50px;
   }
 
   .description {
-    padding: 40px 200px;
+    height: 100px;
   }
 
   h1 {
@@ -193,7 +178,8 @@ input {
 
 .submit {
   font-size: 1.5em;
-  /* padding: 10px 5px; */
+  width: 100px;
+  padding: 0;
 }
 }
 

@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
 <div class="body">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
     <h2> Asked Questions </h2>
@@ -32,13 +33,27 @@
       </div>
  </div>
   </div>
+=======
+  <div> 
+     <h1> All Questions </h1>
+      <h2> <router-link v-bind:to="'/reply-to-item'"> Question jdnijksnvkd </router-link> </h2>
+       <div v-for="item in items" :key="item.id" :item="item">
+          <router-link :to="{
+              name: 'itemDetail',
+              params: {itemId: item.id}
+              }"> 
+              <h1> {{item.body}} </h1>
+          </router-link>
+      </div>
+>>>>>>> 75dba718bcde9a2fde726866221dbdeca31f3b1f
       <NavBarUser/>
   </div>
 </template>
 
 <script>
-// import axios from "axios";
-// import * as config from "../../../config";
+
+import axios from "axios";
+import * as config from "../../../config";
 import NavBarUser from "./NavBarUser"
 
 export default {
@@ -49,52 +64,45 @@ export default {
     },
     data: function(){
         return {
-            event: {},
-            items: []
+            items: [],
+            item: {},
+            event: {}
         }
+        
     },
-    // methods: {
-    //  getAllItems: function(eventId) {
-    //     let userId = localStorage.getItem('userId')
-    //     // let eventId = localStorage.getItem('eventId')
+      methods: {
+     getMyItems: function() {
+        let userId = localStorage.getItem('userId')
+        let eventId = localStorage.getItem('eventId')
+      return axios
+        .get(`${config.apiUrl}/users/${userId}/events/${eventId}/items`)
+        .then(function (response) {
+          return response.data.items;
+        })
+        .catch(function(error){
+          console.log(error)
+        })
+    } ,
 
-    // // const eventId = this.$route.params.eventId
-    //   return axios
-    //     .get(`${config.apiUrl}/users/${userId}/events/${eventId}/items`)
-    //     .then(function (response) {
-    //       return response.data.item;
-    //       // console.log(event)
-    //     })
-    //     .catch(function(error){
-    //       console.log(error)
-    //     })
-    // },
-//     getEvent: function(eventId) {
-//       let userId = localStorage.getItem('userId')
-//     // const eventId = this.$route.params.eventId
-//       return axios
-//         .get(`${config.apiUrl}/users/${userId}/events/${eventId}`)
-//         .then(function (response) {
-//           return response.data.event;
-          
-//           // console.log(event)
-//         })
-//         .catch(function(error){
-//           console.log(error)
-//         })
-//     }
-//     },
-//  created: async function() {
-//     const eventId = this.$route.params.eventId
-//     console.log('created', eventId)
-//       this.event = await this.getEvent(eventId)
-//       console.log(this.event)
-//    },
-// }
+     getEvent: function(eventId) {
+      let userId = localStorage.getItem('userId')
+      return axios
+        .get(`${config.apiUrl}/users/${userId}/events/${eventId}`)
+        .then(function (response) {
+          return response.data.event;
+        })
+        .catch(function(error){
+          console.log(error)
+        })
+    }
+      }, created: async function() {
+    const eventId = this.$route.params.eventId
+    console.log('created', eventId)
+      this.event = await this.getEvent(eventId)
+      this.items = await this.getMyItems()
+      console.log(this.event)
+   },
 }
-
-    
-
 </script>
 
 <style scoped>
