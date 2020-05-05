@@ -9,6 +9,30 @@
    <div  v-for="item in items" :key="item.id" :item="item">
        <div class="item-box">
           <div class="item-content">
+<<<<<<< HEAD
+        <h3>name</h3>
+      <h2> <router-link v-bind:to="'/reply-to-item'"> Question jdnijksnvkd </router-link> </h2>
+      </div>
+      <div class="item-options">
+          <p class="reply">Replied</p>
+          <p>Delete</p>
+          </div>
+      </div>
+      <div class="item-box">
+          <div class="item-content">
+        <h3>name</h3>
+      <h2> <router-link v-bind:to="'/reply-to-item'"> Question jdnijksnvkd </router-link> </h2>
+      </div>
+      <div class="item-options">
+          <p class="reply">Replied</p>
+          <p>Delete</p>
+          </div>
+      </div>
+      <div class="item-box">
+          <div class="item-content">
+        <h3>name</h3>
+      <h2> <router-link v-bind:to="'/reply-to-item'"> Question jdnijksnvkd </router-link> </h2>
+=======
         <h1>name</h1>
       <h2>  <router-link :to="{
               name: 'itemDetailAdmin',
@@ -16,6 +40,7 @@
               }"> 
               <h3> {{item.body}} </h3>
           </router-link>  </h2>
+>>>>>>> cdfb60e1656d9c4aaccebbd5f751b0ebbd026365
       </div>
       <div class="item-options">
           <p class="reply">Replied</p>
@@ -25,7 +50,17 @@
        
           </div> 
           </div>
+<<<<<<< HEAD
+       <div v-for="item in items" :key="item.id" :item="item">
+          <router-link :to="{
+              name: 'itemDetail',
+              params: {itemId: item.id}
+              }"> 
+              <h1> {{item.body}} </h1>
+          </router-link>
+=======
     
+>>>>>>> cdfb60e1656d9c4aaccebbd5f751b0ebbd026365
       </div>
          <!-- <ul class="buttons-nav">
       <li class="edit"> <router-link v-bind:to="'/edit-conference'"> Edit <br/> Conference </router-link> </li>

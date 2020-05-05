@@ -33,6 +33,17 @@
       </div>
  </div>
   </div>
+  <div> 
+     <h1> All Questions </h1>
+      <h2> <router-link v-bind:to="'/reply-to-item'"> Question jdnijksnvkd </router-link> </h2>
+       <div v-for="item in items" :key="item.id" :item="item">
+          <router-link :to="{
+              name: 'itemDetail',
+              params: {itemId: item.id}
+              }"> 
+              <h1> {{item.body}} </h1>
+          </router-link>
+      </div>
       <NavBarUser/>
   </div>
 </template>
