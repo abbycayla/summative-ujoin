@@ -3,6 +3,10 @@
         <div class="login-user">
  <button> <router-link v-bind:to="'/admin-login'"> Log in as Admin </router-link> </button>
         </div>
+        <div class="logo">
+            
+  <img src="https://i.ibb.co/X8m0qjh/UJOIN-logo.png" alt="UJOIN-logo" border="0">
+        </div>
   
 <div class="user-info">
      <p>Please enter your name</p>
@@ -21,11 +25,12 @@
 <script>
 export default {
     name: "UserLogin",
+
 }
+
 </script>
 
 <style scoped>
-
 
 input {
 border: solid 1px #2B313F;
@@ -48,6 +53,7 @@ padding: 10px 0px 10px 5px;
 .login-user{
 display: flex;
 justify-content: flex-end;
+margin: 10px 20px 0px 0px;
 
 }
 
@@ -144,5 +150,6 @@ input::placeholder {
 
  }
   
+
 
 </style>

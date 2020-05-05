@@ -1,8 +1,14 @@
 <template>
   <div class="body">
-      <h1> Questions </h1>
-      <div class="item-box">
+    <HeaderConference/> 
+    <div class="adminQuestions">
+ <h1> Questions </h1>
+    </div>
+     
+   <div  v-for="item in items" :key="item.id" :item="item">
+       <div class="item-box">
           <div class="item-content">
+<<<<<<< HEAD
         <h3>name</h3>
       <h2> <router-link v-bind:to="'/reply-to-item'"> Question jdnijksnvkd </router-link> </h2>
       </div>
@@ -25,11 +31,22 @@
           <div class="item-content">
         <h3>name</h3>
       <h2> <router-link v-bind:to="'/reply-to-item'"> Question jdnijksnvkd </router-link> </h2>
+=======
+        <h1>name</h1>
+      <h2>  <router-link :to="{
+              name: 'itemDetailAdmin',
+              params: {itemId: item.id}
+              }"> 
+              <h3> {{item.body}} </h3>
+          </router-link>  </h2>
+>>>>>>> cdfb60e1656d9c4aaccebbd5f751b0ebbd026365
       </div>
       <div class="item-options">
           <p class="reply">Replied</p>
           <p>Delete</p>
+          </div> 
           </div>
+<<<<<<< HEAD
        <div v-for="item in items" :key="item.id" :item="item">
           <router-link :to="{
               name: 'itemDetail',
@@ -37,22 +54,29 @@
               }"> 
               <h1> {{item.body}} </h1>
           </router-link>
+=======
+    
+>>>>>>> cdfb60e1656d9c4aaccebbd5f751b0ebbd026365
       </div>
       <NavBarAdmin/>
-  </div>
+       </div>
+       
 </template>
 
 <script>
 import axios from "axios";
 import * as config from "../../../config";
+
 import NavBarAdmin from "./NavBarAdmin"
+import HeaderConference from "../user/HeaderConference"
 
 export default {
-
     name: "AllItemsAdmin",
-    components:{
-        NavBarAdmin
+     components: {
+      HeaderConference,
+      NavBarAdmin
     },
+
     data: function(){
         return {
             items: [],
@@ -74,109 +98,186 @@ export default {
           console.log(error)
         })
     } ,
-
-     getEvent: function(eventId) {
-      let userId = localStorage.getItem('userId')
-      return axios
-        .get(`${config.apiUrl}/users/${userId}/events/${eventId}`)
-        .then(function (response) {
-          return response.data.event;
-        })
-        .catch(function(error){
-          console.log(error)
-        })
-    }
-      }, created: async function() {
-    const eventId = this.$route.params.eventId
-    console.log('created', eventId)
-      this.event = await this.getEvent(eventId)
+   }, created: async function() {
       this.items = await this.getMyItems()
-      console.log(this.event)
-   },
+   }
 }
 </script>
-
+ 
 <style scoped>
-
-.body {
-    background-color: #454C59;
-    height: 100vh;
+ul {
+  width: 100%;
+  display: flex;
+  background-color: white;
+}
+li {
+    padding: 5% 10px;
+    text-align: center;
+    outline: none;
+    list-style-type: none;
+    width: 220px;
+}
+li a {
+    font-size: 1.2em;
+    text-decoration: none;
+    color: #28313f;
+}
+.host{
+    background-color: #4baced;
+    
+}
+.edit{
+    background-color: white;
+}
+.host a, .edit a {
+  color: #28313f;
+}
+.host {
+  padding-top: 30px;
 }
 
-.item-box {
+.adminQuestions h1{ 
+  color: white;
+}
+
+div {
+    font-family: 'Open Sans', sans-serif;
+}
+.body {
+    background-color: #28313f;
+    height: 100vh;
+
+    
+}
+
+ul {
+  width: 100%;
   display: flex;
+  justify-content: space-between;
   background-color: #f2f2f2;
-  margin-left: 10%;
-  margin-right: 10%;
-  margin-bottom: 10%;
+  border: #f2f2f2 1px solid;
+  margin-left: 40px;
+  margin-right: 40px;
+ margin-top: 40px;
+ margin-bottom: 30px;
   }
 
+li {
+ padding: 5% 10px;
+ text-align: center;
+ outline: none;
+ list-style-type: none;
+ width: 220px;
+}
+li a {
+ font-size: 1.2em;
+ text-decoration: none;
+ color: #28313f;
+}
+.host{
+ background-color: #4baced;
+ 
+}
+.edit{
+ background-color: white;
+}
+.host a, .edit a {
+ color: #28313f;
+}
+.host {
+ padding-top: 30px;
+}
+ 
+.adminQuestions h1{ 
+ color: white;
+}
+ 
+.body {
+ background-color: #28313f;
+}
+ 
+.item-box {
+ display: flex;
+ justify-content: space-between;
+ background-color: #f2f2f2;
+ border: #f2f2f2 1px solid;
+ margin-left: 40px;
+ margin-right: 40px;
+ margin-top: 40px;
+ margin-bottom: 30px;
+ }
+ 
 .item-options {
-  padding-bottom: 10px;
-  border-left: #454C59 2px solid;
-  width: 40%;
-  font-family: 'Open Sans', sans-serif;
-  color: #454C59;
-  padding-bottom: 10px;
+ padding-bottom: 10px;
+ border-left: #454C59 2px solid;
+ color: #454C59;
+ padding-bottom: 10px;
 }
-
+ 
 .reply {
-  border-bottom: #454C59 2px solid;
-  background-color: #54a9de;
-  padding-bottom: 10px;
+ border-bottom: #454C59 2px solid;
+ background-color: #54a9de;
+ padding-bottom: 10px;
 }
-
+ 
 h1 {
     font-family: 'Open Sans', sans-serif;
-    margin-bottom: 10%;
+    margin-bottom: 8px;
+    margin-top: 0px;
     text-align: center;
-    color: #F2F2F2;
-    font-size: 1.8em;
+    color: #454C59;
+    font-size: 30px;
 }
 
+h2 {
+ margin-bottom: 8px;
+ text-align: center;
+ color: #454C59;
+ font-size: 30px;
+}
+ 
 h3 {
-  color: #454C59; 
+      color: #454C59;
   font-family: 'Open Sans', sans-serif;
-  font-size: 1.3em;
+  font-size: 15px;
 }
-
+ 
 a {
-  text-decoration: none;
-  color: #454C59;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 0.8em;
-  font-weight: lighter;
+ text-decoration: none;
+ color: #454C59;
+ font-size: 0.8em;
+ font-weight: lighter;
 }
-
+ 
 p {
-  padding-top: 10px;
+ padding-top: 10px;
 }
-
+ 
 @media only screen and (min-width: 768px) {
-
-  .item-box {
-    margin-left: 20%;
-    margin-right: 20%;
-  }
-
-  .item-content {
-    width: 80%;
-  }
-
-  .item-options{
-    width: 40%;
-  }
-
-  p {
-    padding-left: 20px;
-  }
-
-  h3 {
-    padding-left: 20px;
-  }
-
-  h2 {
-    padding-left: 20px;
-  }
+ 
+ .item-box {
+ margin-left: 20%;
+ margin-right: 20%;
+ }
+ 
+ .item-content {
+ width: 80%;
+ }
+ 
+ .item-options{
+ width: 40%;
+ }
+ 
+ p {
+ padding-left: 20px;
+ }
+ 
+ h3 {
+ padding-left: 20px;
+ }
+ 
+ h2 {
+ padding-left: 20px;
+ }
 }
 </style>

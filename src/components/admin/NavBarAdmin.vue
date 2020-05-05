@@ -1,11 +1,11 @@
 <template>
   <div> 
+      <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
       <ul>
+        <!-- <div v-for="event in events" :key="event.id"> -->
           <li class="all-questions"> <router-link v-bind:to="'/all-items-admin'"> All <br /> Questions </router-link> </li>
-          <li class="end-conference">  <router-link :to="{
-              name: 'details',
-              params: {eventId: event.id}
-              }">  End  <br /> Conference  </router-link> </li>
+          <li class="end-conference">  <router-link :to="{name: 'details', params: {eventId: event.id}}">  End  <br /> Conference  </router-link> </li>
+        <!-- </div> -->
       </ul>
   </div>
 </template>
@@ -19,10 +19,12 @@ export default {
      data: function(){
       return{
        event: {
-      
-      },
+         id: ''
+       },
+       events: []
       }
-    }, methods: {
+    }, 
+      methods: {
     getEvent: function(eventId) {
       let userId = localStorage.getItem('userId')
       return axios
@@ -34,14 +36,12 @@ export default {
           console.log(error)
         })
     }
-    
   }
    , created: async function() {
-    const eventId = this.$route.params.eventId
-    console.log('created', eventId)
-      this.event = await this.getEvent(eventId)
-      console.log(this.event)
+    let eventId = localStorage.getItem('eventId')
+    this.event = await this.getEvent(eventId)
    },
+      
 }
 </script>
 
@@ -69,11 +69,11 @@ li a {
     text-decoration: none;
     color: #28313f;
     font-weight: lighter;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .all-questions {
     border-right: solid 1px grey;
-    /* background-color: white; */
 }
 
 .end-conference {
@@ -82,16 +82,16 @@ li a {
 
 .end-conference a {
     color: white;
+     font-family: 'Open Sans', sans-serif;
 }
 
 .router-link-exact-active {
-  font-weight: bold;
   color: #54a9de;
 }
 
 @media only screen and (min-width: 768px){
   ul {
-        justify-content: center;
+    justify-content: center;
     }
 
     li {

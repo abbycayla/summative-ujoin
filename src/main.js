@@ -8,19 +8,21 @@ import EnterCode from './components/login/EnterCode.vue';
 import AdminLogin from './components/login/AdminLogin.vue';
 import UserLogin from './components/login/UserLogin.vue';
 
+
 //USER
 import AllItemsUser from './components/user/AllItemsUser.vue';
 import MyItems from './components/user/MyItems.vue';
 import CreateItem from './components/user/CreateItem.vue';
 import EditItem from './components/user/EditItem.vue';
-import ItemDetail from './components/user/ItemDetail.vue';
+import ItemDetailUser from './components/user/ItemDetailUser.vue';
 
 //ADMIN
 import AllItemsAdmin from './components/admin/AllItemsAdmin.vue';
 import CreateConference from './components/admin/CreateConference.vue';
 import ConferenceDetails from './components/admin/ConferenceDetails.vue';
 import EditConference from './components/admin/EditConference.vue';
-import ReplyToItem from './components/admin/ReplyToItem.vue';
+import ItemDetailAdmin from './components/admin/ItemDetailAdmin.vue';
+
 
 
 
@@ -60,23 +62,28 @@ const routes = [
     props: true,
   }, 
   {
-    name: "itemDetail",
-    path: '/item-detail/:itemId',
-    component: ItemDetail,
+    name: "itemDetailUser",
+    path: '/item-detail-user/:itemId',
+    component: ItemDetailUser,
+    props: true,
+  },
+  {
+    name: "itemDetailAdmin",
+    path: '/item-detail-admin/:itemId',
+    component: ItemDetailAdmin,
     props: true,
   },
   {
     path: '/create-item',
     component: CreateItem,
+    
   },
   {
     path: '/edit-item',
     component: EditItem,
   },
   {
-    name: 'AllItemsAdmin',
-    props: true,
-    path: '/all-items-admin/:eventId',
+    path: '/all-items-admin',
     component: AllItemsAdmin,
   },
   {
@@ -95,10 +102,6 @@ const routes = [
     path: '/edit-conference',
     component: EditConference,
   },
-  {
-    path: '/reply-to-item',
-    component: ReplyToItem,
-  }
 ]
 
 
